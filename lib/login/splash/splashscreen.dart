@@ -9,14 +9,12 @@ import '../login/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
-
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
   // bool animate = false;
-
   final splashscreenController = Get.put(SplashScreenController());
 
   @override
@@ -26,42 +24,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
     //init에서 await를 사용할 수 없어 일반 함수로 생성한다.
     splashscreenController.startAnimation();
-    //checkToken();
-  }
-
-  void deleteToken() async {
-    storage.deleteAll();
-  }
-
-  checkToken() async {
-    final refreshToken = await storage.read(key: REFRESH_TOKEN_KEY);
-    final accessToken = await storage.read(key: ACCESS_TOKEN_KEY);
-
-    final dio = Dio();
-
-    try {
-      final resp = await dio.post('http://$ip/auth/token',
-          options: Options(headers: {'authorization': 'Bearer $refreshToken'}));
-
-      await storage.write(
-          key: ACCESS_TOKEN_KEY, value: resp.data['accessToken']);
-
-      //정상적으로 인증이 되면 메인 페이지로 이동한다.
-      //pushAndRemoveUntil을 하면 뒤로가기를 제거해 준다.
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MainScreen(),
-          ),
-          (route) => false);
-    } catch (e) {
-      print(e);
-      //만약 정상적으로 처리되지 않을 경우 로그인 페이지로 이동한다.
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
-      );
-    }
   }
 
   @override

@@ -45,6 +45,7 @@ dependencies:
   multi_image_picker: ^4.8.1
   webview_flutter: ^4.2.2
   get: ^4.6.5
+  google_fonts: ^5.1.0
 
 dev_dependencies:
   flutter_test:
