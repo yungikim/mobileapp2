@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               left: splashscreenController.animate.value ? -40 : -70,
               width: 150,
               child: Image(
-                image: AssetImage("asset/images/water.png"),
+                image: AssetImage("asset/images/splash_images/water.png"),
               ),
             ),
           ),
@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   duration: const Duration(milliseconds: 2000),
                   opacity: splashscreenController.animate.value ? 1 : 0,
                   child: Image(
-                    image: AssetImage("asset/images/back1.png"),
+                    image: AssetImage("asset/images/splash_images/back1.png"),
                   )),
             ),
           ),
