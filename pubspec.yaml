@@ -80,6 +80,7 @@ flutter:
     - asset/images/
     - asset/images/splash_images/
     - asset/images/on_boarding_images/
+    - asset/images/logo/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
