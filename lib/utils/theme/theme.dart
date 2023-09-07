@@ -1,10 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:mobileapp/utils/theme/elevated_button_theme.dart';
+import 'package:mobileapp/utils/theme/outline_button_theme.dart';
 import 'package:mobileapp/utils/theme/text_theme.dart';
 
 class TAppTheme{
 
-  const TAppTheme({Key? key, ThemeData? themeData});
+  //const TAppTheme({Key? key, ThemeData? themeData});
+  TAppTheme._();
 
 
   static ThemeData lightTheme = ThemeData(
@@ -13,8 +16,8 @@ class TAppTheme{
     textTheme: TTextTheme.lightTextTheme,
     appBarTheme: AppBarTheme(),
     floatingActionButtonTheme: FloatingActionButtonThemeData(),
-    elevatedButtonTheme:
-      ElevatedButtonThemeData(style: ElevatedButton.styleFrom()),
+    elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
+    outlinedButtonTheme: TOutLinedButtonTheme.lightOutlineButtonTheme
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -23,7 +26,7 @@ class TAppTheme{
     textTheme: TTextTheme.darkTextTheme,
     appBarTheme: AppBarTheme(),
     floatingActionButtonTheme: FloatingActionButtonThemeData(),
-    elevatedButtonTheme:
-      ElevatedButtonThemeData(style: ElevatedButton.styleFrom()),
+    elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
+    outlinedButtonTheme: TOutLinedButtonTheme.darkOutlineButtonTheme
   );
 }

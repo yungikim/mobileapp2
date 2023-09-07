@@ -30,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+        alignment: Alignment.center,
         children: [
           Obx(
             () => AnimatedPositioned(
@@ -69,9 +70,10 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           Obx(
             () => AnimatedPositioned(
+
               duration: const Duration(milliseconds: 2400),
               bottom: splashscreenController.animate.value ? 150 : 0,
-              left: 15,
+              //left: 15,
               width: 320,
               child: AnimatedOpacity(
                   duration: const Duration(milliseconds: 2000),

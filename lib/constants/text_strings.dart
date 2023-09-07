@@ -1,4 +1,6 @@
-
+//Login
+const String tLogin = "Login";
+const String tSignup = "Signup";
 
 //on Boarding Text
 const String tOnBoardingTitle1 = "Build Awesome Apps";
@@ -12,3 +14,7 @@ const String tOnBoardingSubTitle3 = "Save time by just aopy pasting complete app
 const String tOnBoardingConter1 = "1/3";
 const String tOnBoardingConter2 = "2/3";
 const String tOnBoardingConter3 = "3/3";
+
+//Welcome Screen Text
+const String tWelcomeTitle = "Build Awesome Apps";
+const String tWelcomeSubTitle = "Let's put your creativity on the development highway, craft apps";
