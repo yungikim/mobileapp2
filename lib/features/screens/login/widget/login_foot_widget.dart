@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:mobileapp/features/screens/signup/signup_screen.dart';
 
 import '../../../../constants/image_strings.dart';
 import '../../../../constants/sizes.dart';
@@ -35,7 +38,7 @@ class LoginFootForm extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            print("111111");
+            Get.to(() => SignUpScreen());
           },
           child: Text.rich(
             TextSpan(

@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               top: splashscreenController.animate.value ? -40 : -70,
               left: splashscreenController.animate.value ? -40 : -70,
               width: 150,
-              child: Image(
+              child: const Image(
                 image: AssetImage("asset/images/splash_images/water.png"),
               ),
             ),
@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ".appable/",
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                    Text("Learn To Code. \nFree For Everyone",
+                    const Text("Learn To Code. \nFree For Everyone",
                         style: TextStyle(
                             fontFamily: 'Notosans',
                             fontSize: 20,
@@ -70,7 +70,6 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           Obx(
             () => AnimatedPositioned(
-
               duration: const Duration(milliseconds: 2400),
               bottom: splashscreenController.animate.value ? 150 : 0,
               //left: 15,
@@ -78,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
               child: AnimatedOpacity(
                   duration: const Duration(milliseconds: 2000),
                   opacity: splashscreenController.animate.value ? 1 : 0,
-                  child: Image(
+                  child: const Image(
                     image: AssetImage("asset/images/splash_images/back1.png"),
                   )),
             ),

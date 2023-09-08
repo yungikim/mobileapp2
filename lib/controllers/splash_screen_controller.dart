@@ -38,7 +38,8 @@ class SplashScreenController extends GetxController {
       //pushAndRemoveUntil을 하면 뒤로가기를 제거해 준다.
       //Get.to(() => OnBoardingScreen());
       //Get.off(() => OnBoardingScreen());
-      Get.off(() => WelcomeScreen(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+      //Get.off(() => WelcomeScreen(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+      Get.off(() => OnBoardingScreen(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
     } catch (e) {
       print(e);
       //만약 정상적으로 처리되지 않을 경우 로그인 페이지로 이동한다.

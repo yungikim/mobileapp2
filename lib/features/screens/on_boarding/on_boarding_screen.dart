@@ -31,7 +31,7 @@ class OnBoardingScreen extends StatelessWidget {
             onPageChangeCallback: obcontroller.onPageChangeCallback,
           ),
           Positioned(
-            bottom: 60.0,
+            bottom: 50.0,
             child: OutlinedButton(
               onPressed: (){
                obcontroller.animateNextSlide();

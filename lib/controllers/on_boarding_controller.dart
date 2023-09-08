@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_swipe/PageHelpers/LiquidController.dart';
+import 'package:mobileapp/features/screens/login/login_screen.dart';
 
 import '../constants/colors.dart';
 import '../constants/image_strings.dart';
@@ -46,6 +47,10 @@ class OnBoardingController extends GetxController{
   skip() => controller.jumpToPage(page: 2);
 
   animateNextSlide(){
+    print(controller.currentPage);
+    if (controller.currentPage == 2){
+      Get.off(() => const LoginScreen());
+    }
     int nextPage = controller.currentPage + 1;
     controller.animateToPage(page: nextPage);
   }
