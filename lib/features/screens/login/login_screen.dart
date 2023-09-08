@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mobileapp/constants/image_strings.dart';
 import 'package:mobileapp/constants/sizes.dart';
 import 'package:mobileapp/constants/text_strings.dart';
+import 'package:mobileapp/features/screens/login/widget/login_form_widget.dart';
 
-import 'login_foot_widget.dart';
-import 'login_form_widget.dart';
-import 'login_header_widget.dart';
+import 'widget/login_foot_widget.dart';
+import 'widget/login_header_widget.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

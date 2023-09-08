@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/image_strings.dart';
-import '../../../constants/sizes.dart';
-import '../../../constants/text_strings.dart';
+import '../../../../constants/image_strings.dart';
+import '../../../../constants/sizes.dart';
+import '../../../../constants/text_strings.dart';
 
 
 class LoginFootForm extends StatelessWidget {
@@ -34,7 +34,9 @@ class LoginFootForm extends StatelessWidget {
           height: tFormHeight - 20.0,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            print("111111");
+          },
           child: Text.rich(
             TextSpan(
                 style: Theme.of(context).textTheme.bodyText1,

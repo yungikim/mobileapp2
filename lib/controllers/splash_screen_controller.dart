@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:mobileapp/features/screens/welcome/welcome_screen.dart';
-import 'package:mobileapp/login/boarding/on_boarding_screen.dart';
-import 'package:mobileapp/login/login/login_screen.dart';
+import 'package:mobileapp/features/screens/on_boarding/on_boarding_screen.dart';
 import 'package:mobileapp/view/main/main_screen.dart';
 
 import '../common/data/data.dart';
+import '../features/screens/login/login_screen.dart';
 
 class SplashScreenController extends GetxController {
   static SplashScreenController get find => Get.find();

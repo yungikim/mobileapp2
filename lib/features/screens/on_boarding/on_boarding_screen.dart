@@ -5,10 +5,10 @@ import 'package:mobileapp/constants/colors.dart';
 import 'package:mobileapp/constants/image_strings.dart';
 import 'package:mobileapp/constants/text_strings.dart';
 import 'package:mobileapp/controllers/on_boarding_controller.dart';
-import 'package:mobileapp/features/screens/on_boarding/on_boarding_page_widget.dart';
+import 'package:mobileapp/features/screens/on_boarding/widget/on_boarding_page_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../features/models/model_on_boarding.dart';
+import '../../models/model_on_boarding.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({Key? key}) : super(key: key);

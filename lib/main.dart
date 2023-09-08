@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mobileapp/utils/theme/theme.dart';
-import 'login/splash/splashscreen.dart';
+import 'features/screens/splash/splashscreen.dart';
 
 void main(){
   runApp(
