@@ -48,6 +48,10 @@ dependencies:
   google_fonts: ^5.1.0
   liquid_swipe: ^3.1.0
   smooth_page_indicator: ^1.1.0
+#  flutter_localizations:
+#    sdk: flutter
+  easy_localization: ^3.0.3
+  #intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
@@ -69,7 +73,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  #generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -81,6 +85,7 @@ flutter:
     - asset/images/splash_images/
     - asset/images/on_boarding_images/
     - asset/images/logo/
+    - asset/translations/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -110,3 +115,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true

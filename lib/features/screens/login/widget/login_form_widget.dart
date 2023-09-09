@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants/sizes.dart';
@@ -8,6 +9,8 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
       return Form(
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20.0),

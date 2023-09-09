@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../constants/image_strings.dart';
@@ -22,6 +23,7 @@ class LoginHederWidget extends StatelessWidget {
         ),
         Text(
           tLoginTitle,
+          //tr('login'),
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         Text(
