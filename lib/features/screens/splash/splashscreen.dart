@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -55,11 +56,11 @@ class _SplashScreenState extends State<SplashScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      ".appable/",
+                      tr('splash1'),
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                    const Text("Learn To Code. \nFree For Everyone",
-                        style: TextStyle(
+                    Text("${tr('splash2')}. \n${tr('splash3')}",
+                        style: const TextStyle(
                             fontFamily: 'Notosans',
                             fontSize: 20,
                             fontWeight: FontWeight.w600))

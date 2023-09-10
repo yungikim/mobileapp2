@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobileapp/common/ui/custom_appbar.dart';
 import 'package:mobileapp/constants/colors.dart';
@@ -27,9 +28,9 @@ class SignUpScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: tDefaultSize, right: tDefaultSize, bottom: tDefaultSize),
             child: Column(
               children: [
-                const FormHeaderWidget(
+                FormHeaderWidget(
                   image: tWelcomeScreenImage,
-                  title: tSignUpTitle,
+                  title: tr('tSignUpTitle'),
                   subTitle: tSignUpSubTitle,
                 ),
                 const SignUpFormWidget(),
@@ -45,7 +46,7 @@ class SignUpScreen extends StatelessWidget {
                           image: AssetImage(tGoogleLogoImage),
                           width: 20.0,
                         ),
-                        label: Text(tSignInWithGoogle.toUpperCase()),
+                        label: Text(tr('tSignInWithGoogle').toUpperCase()),
                       ),
                     ),
                     TextButton(
@@ -53,8 +54,8 @@ class SignUpScreen extends StatelessWidget {
                       child: Text.rich(
                         TextSpan(
                           children: [
-                            TextSpan(text: "$tAlreadyHaveAnAccount  ", style: Theme.of(context).textTheme.bodyLarge),
-                            TextSpan(text: tLogin.toUpperCase()),
+                            TextSpan(text: "${tr('tAlreadyHaveAnAccount')}  ", style: Theme.of(context).textTheme.bodyLarge),
+                            TextSpan(text: tr('tLogin').toUpperCase()),
                           ]
                         )
                       ),

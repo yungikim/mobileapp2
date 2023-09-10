@@ -11,7 +11,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../models/model_on_boarding.dart';
 
 class OnBoardingScreen extends StatelessWidget {
-  OnBoardingScreen({Key? key}) : super(key: key);
+  const OnBoardingScreen({Key? key}) : super(key: key);
 
 
 
@@ -37,17 +37,16 @@ class OnBoardingScreen extends StatelessWidget {
                obcontroller.animateNextSlide();
               },
               style: ElevatedButton.styleFrom(
-                side: const BorderSide(color: Colors.black26),
+                foregroundColor: Colors.white, side: const BorderSide(color: Colors.black26),
                 shape: const CircleBorder(),
-                padding: const EdgeInsets.all(20),
-                onPrimary: Colors.white
+                padding: const EdgeInsets.all(20)
               ),
               child: Container(
                 padding: const EdgeInsets.all(20.0),
                 decoration: const BoxDecoration(
                   color: tDartColor, shape: BoxShape.circle
                 ),
-                child: Icon(Icons.arrow_forward_ios),
+                child: const Icon(Icons.arrow_forward_ios),
               ),
             ),
           ),

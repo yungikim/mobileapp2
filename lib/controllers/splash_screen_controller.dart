@@ -39,7 +39,7 @@ class SplashScreenController extends GetxController {
       //Get.to(() => OnBoardingScreen());
       //Get.off(() => OnBoardingScreen());
       //Get.off(() => WelcomeScreen(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
-      Get.off(() => OnBoardingScreen(), transition: Transition.fadeIn, duration: Duration(seconds: 2));
+      Get.off(() => const OnBoardingScreen(), transition: Transition.fadeIn, duration: const Duration(seconds: 2));
     } catch (e) {
       print(e);
       //만약 정상적으로 처리되지 않을 경우 로그인 페이지로 이동한다.

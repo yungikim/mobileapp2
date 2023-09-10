@@ -22,12 +22,11 @@ class LoginHederWidget extends StatelessWidget {
           height: size.height * 0.3,
         ),
         Text(
-          tLoginTitle,
-          //tr('login'),
+          tr('tLoginTitle'),
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         Text(
-          tLoginSubTitle,
+          tr('tLoginSubTitle'),
           style: Theme.of(context).textTheme.bodyText1,
         ),
       ],

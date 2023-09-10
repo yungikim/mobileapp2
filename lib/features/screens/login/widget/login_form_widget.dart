@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text_strings.dart';
@@ -18,21 +19,21 @@ class LoginForm extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
-                decoration: const InputDecoration(
-                  prefixIcon: Icon(Icons.person_outline_outlined),
-                  labelText: tEmail,
-                  hintText: tEmail,
-                  border: OutlineInputBorder(),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.person_outline_outlined),
+                  labelText: tr('tEmail'),
+                  hintText: tr('tEmail'),
+                  border: const OutlineInputBorder(),
                 ),
               ),
               SizedBox(height: tFormHeight-20),
               TextFormField(
-                decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.fingerprint),
-                    labelText: tPassword,
-                    hintText: tPassword,
-                    border: OutlineInputBorder(),
-                    suffixIcon: IconButton(
+                decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.fingerprint),
+                    labelText: tr('tPassword'),
+                    hintText: tr('tPassword'),
+                    border: const OutlineInputBorder(),
+                    suffixIcon: const IconButton(
                       onPressed: null,
                       icon: Icon(Icons.remove_red_eye_sharp),
                     )
@@ -43,12 +44,12 @@ class LoginForm extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: (){},
-                  child: Text(tForgetPassword),
+                  child: Text(tr(tForgetPassword)),
                 ),
               ),
               SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(onPressed: (){}, child: Text(tLogin.toUpperCase()))),
+                  child: ElevatedButton(onPressed: (){}, child: Text(tr('tLogin').toUpperCase()))),
             ],
           ),
         ),

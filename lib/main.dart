@@ -24,7 +24,7 @@ void main() async{
       fallbackLocale: Locale('ko','KR'),
       //startLocale을 지정하면 초기 언어가 설정한 언어로 변경됨
       //만일 이 설정을 하지 않으면 os 언어를 따라 기본 언어가 설정됨
-      startLocale: Locale('ko', 'KR'),
+      //startLocale: Locale('ko', 'KR'),
       child: _App(),
     ),
   );
@@ -35,6 +35,9 @@ class _App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    //EasyLocalization.of(context)!.setLocale(const Locale('ko','KR'));
+
     return GetMaterialApp(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

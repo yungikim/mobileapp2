@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:liquid_swipe/PageHelpers/LiquidController.dart';
@@ -17,25 +18,25 @@ class OnBoardingController extends GetxController{
     OnBoardingPageWidget(
       model: OnBoardingModel(
           image: tOnBoardingImage1,
-          title: tOnBoardingTitle1,
-          subTitle: tOnBoardingSubTitle1,
-          counterText: tOnBoardingConter1,
+          title: tr('tOnBoardingTitle1'),
+          subTitle: tr('tOnBoardingSubTitle1'),
+          counterText: tr('tOnBoardingConter1'),
           bgColor: tOnBoardingPage1Color),
     ),
     OnBoardingPageWidget(
       model: OnBoardingModel(
           image: tOnBoardingImage2,
-          title: tOnBoardingTitle2,
-          subTitle: tOnBoardingSubTitle2,
-          counterText: tOnBoardingConter2,
+          title: tr('tOnBoardingTitle2'),
+          subTitle: tr('tOnBoardingSubTitle2'),
+          counterText: tr('tOnBoardingConter2'),
           bgColor: tOnBoardingPage2Color),
     ),
     OnBoardingPageWidget(
       model: OnBoardingModel(
           image: tOnBoardingImage3,
-          title: tOnBoardingTitle3,
-          subTitle: tOnBoardingSubTitle3,
-          counterText: tOnBoardingConter3,
+          title: tr('tOnBoardingTitle3'),
+          subTitle: tr('tOnBoardingSubTitle3'),
+          counterText: tr('tOnBoardingConter3'),
           bgColor: tOnBoardingPage3Color),
     ),
   ];

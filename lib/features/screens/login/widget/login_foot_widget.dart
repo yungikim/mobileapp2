@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -25,29 +26,29 @@ class LoginFootForm extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: OutlinedButton.icon(
-            icon: Image(
+            icon: const Image(
               image: AssetImage(tGoogleLogoImage),
               width: 20.0,
             ),
             onPressed: () {},
-            label: Text(tSignInWithGoogle),
+            label: Text(tr('tSignInWithGoogle')),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: tFormHeight - 20.0,
         ),
         TextButton(
           onPressed: () {
-            Get.to(() => SignUpScreen());
+            Get.to(() => const SignUpScreen());
           },
           child: Text.rich(
             TextSpan(
-                style: Theme.of(context).textTheme.bodyText1,
-                text: tDontHaveAnAccount + "  ",
+                style: Theme.of(context).textTheme.bodyLarge,
+                text: "${tr('tDontHaveAnAccount')}  ",
                 children: [
                   TextSpan(
-                      text: tSignup,
-                      style: TextStyle(color: Colors.blue)
+                      text: tr('tSignup'),
+                      style: const TextStyle(color: Colors.blue)
                   )
                 ]
             ),
