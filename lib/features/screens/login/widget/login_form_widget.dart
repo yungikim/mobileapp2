@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobileapp/utils/sample/google_login.dart';
 
 import '../../../../constants/sizes.dart';
 import '../../../../constants/text_strings.dart';
+import '../../../../utils/sample/google_login2.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -49,7 +51,9 @@ class LoginForm extends StatelessWidget {
               ),
               SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton(onPressed: (){}, child: Text(tr('tLogin').toUpperCase()))),
+                  child: ElevatedButton(onPressed: (){
+                    Get.to(() => GoogleSignInApp());
+                  }, child: Text(tr('tLogin').toUpperCase()))),
             ],
           ),
         ),
