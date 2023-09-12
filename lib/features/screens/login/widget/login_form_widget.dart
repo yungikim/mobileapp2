@@ -52,7 +52,7 @@ class LoginForm extends StatelessWidget {
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(onPressed: (){
-                    Get.to(() => GoogleSignInApp());
+                    Get.to(() => const GoogleSignInApp());
                   }, child: Text(tr('tLogin').toUpperCase()))),
             ],
           ),
