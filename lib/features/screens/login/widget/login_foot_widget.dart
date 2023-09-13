@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mobileapp/features/screens/signup/signup_screen.dart';
+import 'package:mobileapp/utils/sample/google_login.dart';
 
 import '../../../../constants/image_strings.dart';
 import '../../../../constants/sizes.dart';
@@ -30,7 +31,9 @@ class LoginFootForm extends StatelessWidget {
               image: AssetImage(tGoogleLogoImage),
               width: 20.0,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.to(()=> GoogleLogin());
+            },
             label: Text(tr('tSignInWithGoogle')),
           ),
         ),
