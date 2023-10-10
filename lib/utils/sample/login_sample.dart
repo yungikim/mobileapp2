@@ -38,7 +38,8 @@ class LoginAppSample extends StatelessWidget {
           children: [
             ElevatedButton(onPressed: (){
               Get.to(()=> FireBaseLogin());
-            }, child: Text("클릭"))
+            }, child: Text("로그인 하기")),
+            SizedBox(height: 20,),
           ],
         ),
       ),

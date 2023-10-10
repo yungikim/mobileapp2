@@ -11,13 +11,19 @@ class SamplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Flutter Dev Sample"),
+      ),
       body: Center(
         child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(onPressed: (){
+
               Get.to(()=> SplashScreen());
             }, child: Text("Splash Screen1")),
-
+            SizedBox(height: 20,),
             ElevatedButton(onPressed: (){
               Get.to(()=> LoginAppSample());
             }, child: Text("로그인 샘플1"))

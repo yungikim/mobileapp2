@@ -8,4 +8,4 @@ const REFRESH_TOKEN_KEY = 'REFRESH_TOKEN';
 //이걸 사용하려면 android >> app >> build.grade 안에 minSdkVersion : 18로 변경 해야 한다.
 final storage = FlutterSecureStorage();
 
-final ip = "files.kmslab.com:13001";
+final server_ip = "http://172.30.1.44:8080/gmobile/";
