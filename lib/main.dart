@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:mobileapp/sample_page.dart';
 import 'package:mobileapp/utils/theme/theme.dart';
 import 'features/screens/splash/splashscreen.dart';
 
@@ -47,7 +48,7 @@ class _App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home: const SamplePage(),
     );
   }
 }
