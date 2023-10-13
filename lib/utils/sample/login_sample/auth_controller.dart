@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:mobileapp/features/screens/app/main_screen.dart';
 import 'package:mobileapp/features/screens/login/login_screen.dart';
+import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:mobileapp/utils/sample/login_sample/welcome_sample.dart';
 
@@ -32,7 +33,7 @@ class AuthController extends GetxController{
 
     if (user == null){
       print("Login page");
-      Get.offAll(()=> FireBaseLogin());
+      Get.offAll(()=> LoginAppSample());
     }else{
       print("메인으로 이동해야 한다.");
       Get.offAll(()=> WelcomeSample(email:user.email!));

@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:mobileapp/utils/sample/login_sample/auth_controller.dart';
 import 'package:mobileapp/utils/sample/login_sample/server_login.dart';
 
-class FireBaseLogin extends StatelessWidget{
-  const FireBaseLogin({Key? key}) : super(key: key);
-
-
+class ServerLoginScreen extends StatelessWidget {
+  const ServerLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-  //  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
-    //  SimpleController controller = Get.put(SimpleController());
-
-   // AuthController controller = Get.put(AuthController());
-
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
 
@@ -23,7 +13,7 @@ class FireBaseLogin extends StatelessWidget{
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("파이어베이스 로그인"),
+        title: Text("서버 로그인 하기"),
       ),
       body: Center(
         child: Column(
@@ -67,28 +57,14 @@ class FireBaseLogin extends StatelessWidget{
                         width: 1.0,
                       ))),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  AuthController.instance
-                      .register(emailController.text, passwordController.text);
-                },
-                child: Text("Firebase 아이디 만들기")),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  AuthController.instance
-                      .logIn(emailController.text, passwordController.text);
-                },
-                child: Text("Firebase 로그인")),
+
             SizedBox(height: 20,),
             ElevatedButton(
                 onPressed: () {
-                  AuthController.instance
-                      .register(emailController.text, passwordController.text);
+                  // AuthController.instance
+                  //     .register(emailController.text, passwordController.text);
                 },
-                child: Text("구글 로그인")),
+                child: Text("서버 로그인 아이디 만들기")),
             SizedBox(
               height: 20,
             ),
@@ -96,7 +72,7 @@ class FireBaseLogin extends StatelessWidget{
                 onPressed: () {
                   slc.login(emailController.text, passwordController.text);
                 },
-                child: Text("페이스북 로그인"))
+                child: Text("서버 로그인"))
           ],
         ),
       ),

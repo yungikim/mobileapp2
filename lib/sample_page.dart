@@ -26,7 +26,7 @@ class SamplePage extends StatelessWidget {
             }, child: Text("Splash Screen1")),
             SizedBox(height: 20,),
             ElevatedButton(onPressed: (){
-              Get.to(()=> FireBaseLogin());
+              Get.to(()=> LoginAppSample());
             }, child: Text("로그인 샘플1"))
           ],
         ),
