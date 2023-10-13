@@ -86,7 +86,7 @@ class FireBaseLogin extends StatelessWidget{
             ElevatedButton(
                 onPressed: () {
                   AuthController.instance
-                      .register(emailController.text, passwordController.text);
+                      .signInWithGoogle(context);
                 },
                 child: Text("구글 로그인")),
             SizedBox(

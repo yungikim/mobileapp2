@@ -19,6 +19,13 @@ Future<void> main() async {
 class LoginApp extends StatelessWidget {
   const LoginApp({Key? key}) : super(key: key);
 
+  // @override
+  // void initState() {
+  //   print("1111111111111111");
+  //   //initSate에서 await를 사용할 수 없어 별도 일반 함수를 생성한다.
+  //   inx();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -27,11 +34,20 @@ class LoginApp extends StatelessWidget {
   }
 }
 
+Future<void>  inx() async{
+
+  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+}
+
 class LoginAppSample extends StatelessWidget {
   const LoginAppSample({Key? key}) : super(key: key);
 
+  //sfl로 설정해야 initState를 사용할 수 있다.
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: Text("로그인 샘플"),

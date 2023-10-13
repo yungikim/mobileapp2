@@ -1,7 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mobileapp/sample_page.dart';
+import 'package:mobileapp/utils/sample/login_sample/auth_controller.dart';
 import 'package:mobileapp/utils/theme/theme.dart';
 import 'features/screens/splash/splashscreen.dart';
 
