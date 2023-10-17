@@ -10,7 +10,9 @@ import 'package:mobileapp/features/screens/app/main_screen.dart';
 import 'package:mobileapp/features/screens/login/login_screen.dart';
 import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
+import 'package:mobileapp/utils/sample/login_sample/phone.dart';
 import 'package:mobileapp/utils/sample/login_sample/welcome_sample.dart';
+
 
 class AuthController extends GetxController{
   //AuthController.instance ...
@@ -18,7 +20,8 @@ class AuthController extends GetxController{
   //email, password, name...
   late Rx<User?> _user;
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  static String verify = "";
+  String kakaoemail = "";
 
   @override
   void onReady(){
@@ -38,7 +41,11 @@ class AuthController extends GetxController{
       Get.offAll(()=> LoginAppSample());
     }else{
       print("메인으로 이동해야 한다.");
-      Get.offAll(()=> WelcomeSample(email:user.email!));
+      print(user.phoneNumber);
+      String email = user.email ?? "None";
+      String phonenumber = user.phoneNumber ?? "None";
+      Get.offAll(()=> WelcomeSample(email:user.email, phone:user.phoneNumber));
+     //  Get.offAll(()=> WelcomeSample( ));
     }
   }
 
@@ -137,6 +144,9 @@ class AuthController extends GetxController{
   }
 
   void logOut()async{
+    print("로그 아웃 실행한다.....");
+    GoogleSignIn _googleSignIn = GoogleSignIn();
+    await _googleSignIn.signOut(); // .disconnect(); //로그인시 여러개의 계정 중에 하나를 선택하라고 띄우고 싶을 경우 추가한다.
     await auth.signOut();
   }
 
@@ -151,10 +161,38 @@ class AuthController extends GetxController{
       );
       UserCredential _credential = await auth.signInWithCredential(_googleCredential);
       if (_credential.user != null){
-        _user = _credential.user as Rx<User?>;
+        //_user = _credential.user as Rx<User?>;
         print("구글 접속 로그인 정보 : " + _user.string);
       }
     }
   }
+
+  void singPhone() async{
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '+821028625570',
+      verificationCompleted: (PhoneAuthCredential credential){
+
+       //await auth.signInWithCredential(credential);
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        print(e.message);
+      },
+      codeSent: (String verficationId, int? resendToken) {
+        AuthController.verify = verficationId;
+        print("verficationId : ${verficationId}");
+        Get.to(() => Phone());
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+  }
+
+  void LoginPhone(String code) async{
+    print("code : ${code}");
+    String verify = AuthController.verify;
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verify, smsCode: code);
+    await auth.signInWithCredential(credential);
+  }
+
+
 
 }

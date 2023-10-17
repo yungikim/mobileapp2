@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 import 'package:mobileapp/utils/sample/login_sample/auth_controller.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,6 +14,7 @@ import 'package:mobileapp/utils/sample/login_sample/server_login_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  kakao.KakaoSdk.init(nativeAppKey: 'b518f7790732911b6fb384439e147353');
   runApp(const LoginApp());
 }
 
