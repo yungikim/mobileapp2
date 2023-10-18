@@ -8,6 +8,7 @@ import 'package:mobileapp/sample_page.dart';
 import 'package:mobileapp/utils/sample/login_sample/auth_controller.dart';
 import 'package:mobileapp/utils/theme/theme.dart';
 import 'features/screens/splash/splashscreen.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
 
 //앱에서 지원하는 언어 리스트 변수
 final supportedLocales =[
@@ -18,6 +19,8 @@ final supportedLocales =[
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp();
+  kakao.KakaoSdk.init(nativeAppKey: 'b518f7790732911b6fb384439e147353');
 
   runApp(
     EasyLocalization(

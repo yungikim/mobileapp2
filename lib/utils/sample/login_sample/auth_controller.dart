@@ -12,6 +12,7 @@ import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:mobileapp/utils/sample/login_sample/phone.dart';
 import 'package:mobileapp/utils/sample/login_sample/welcome_sample.dart';
+import 'package:mobileapp/utils/sample/login_sample2.dart';
 
 
 class AuthController extends GetxController{
@@ -38,7 +39,7 @@ class AuthController extends GetxController{
 
     if (user == null){
       print("Login page");
-      Get.offAll(()=> LoginAppSample());
+      Get.to(()=> LoginSample2());
     }else{
       print("메인으로 이동해야 한다.");
       print(user.phoneNumber);

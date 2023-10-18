@@ -16,7 +16,7 @@ class FireBaseLogin extends StatelessWidget{
   //  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
     //  SimpleController controller = Get.put(SimpleController());
 
-   // AuthController controller = Get.put(AuthController());
+    //AuthController controller = Get.put(AuthController());
 
     var emailController = TextEditingController();
     var passwordController = TextEditingController();

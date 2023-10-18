@@ -18,8 +18,10 @@ Future<void> main() async {
   runApp(const LoginApp());
 }
 
-class LoginApp extends StatelessWidget {
+class LoginApp extends StatelessWidget{
   const LoginApp({Key? key}) : super(key: key);
+
+
 
   // @override
   // void initState() {
@@ -38,13 +40,18 @@ class LoginApp extends StatelessWidget {
 
 Future<void>  inx() async{
 
-  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  //await Firebase.initializeApp().then((value) => Get.put(AuthController()));
+  Get.put(AuthController());
 }
 
 class LoginAppSample extends StatelessWidget {
   const LoginAppSample({Key? key}) : super(key: key);
 
   //sfl로 설정해야 initState를 사용할 수 있다.
+  inx() {
+    // TODO: implement inx
+    throw UnimplementedError();
+  }
 
 
   @override
