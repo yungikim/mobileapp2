@@ -1,14 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:mobileapp/firebase_options.dart';
 import 'package:mobileapp/sample_page.dart';
 import 'package:mobileapp/utils/sample/login_sample/auth_controller.dart';
+import 'package:mobileapp/utils/sample/push_sample/firebase_api.dart';
 import 'package:mobileapp/utils/theme/theme.dart';
+import 'package:notification_when_app_is_killed/model/args_for_ios.dart';
 import 'features/screens/splash/splashscreen.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
+
+import 'package:flutter/services.dart';
+import 'package:notification_when_app_is_killed/model/args_for_ios.dart' as ioslocal;
+import 'package:notification_when_app_is_killed/model/args_for_kill_notification.dart';
+import 'package:notification_when_app_is_killed/notification_when_app_is_killed.dart';
+import 'dart:async';
 
 //앱에서 지원하는 언어 리스트 변수
 final supportedLocales =[
@@ -16,11 +27,79 @@ final supportedLocales =[
   Locale('ko','KR'),
 ];
 
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async{
+  //If you're going to use other Firebase services in the background, such as Firestore,
+  //make sure you call 'initializeApp' before using other Firebase services.
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  print("Handling a background message ${message.messageId}");
+  final notification = message.notification;
+  if (notification != null){
+    print('Background Message also contained a notification : ${notification.title}');
+    print('Background body : ${notification.body}');
+
+
+    const AndroidNotificationChannel channel = AndroidNotificationChannel(
+        'high_importance_channel',
+        'High Importance Notifications',
+        description: 'This channel is used for important notification',
+        importance: Importance.high,
+        playSound: true
+    );
+
+    final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+    AndroidNotification? android = message.notification?.android;
+    if (message.notification != null && android !=null){
+      flutterLocalNotificationsPlugin.show(
+          notification.hashCode,
+          notification?.title,
+          notification?.body,
+          NotificationDetails(
+              android: AndroidNotificationDetails(
+                channel.id,
+                channel.name,
+                icon: "@mipmap/ic_launcher",
+              )
+          )
+      );
+    }
+  }
+}
+
+
+Future<void> setNotificationOnKill() async {
+  print("###########setNotificationOnKill###########");
+  bool success;
+  final _notificationWhenAppIsKilledPlugin = NotificationWhenAppIsKilled();
+  try {
+    ArgsForIos argsForIos = ArgsForIos(
+      interruptionLevel: ioslocal.InterruptionLevel.critical,
+      useDefaultSound: true,
+    );
+    success =
+        await _notificationWhenAppIsKilledPlugin.setNotificationOnKillService(
+          ArgsForKillNotification(
+              title: 'The app is killed',
+              description:
+              'You can see this notification when the app is killed',
+              argsForIos: argsForIos),
+        ) ??
+            false;
+  } on PlatformException {
+    success = false;
+  }
+
+}
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseApi().initNotifications();
+  setNotificationOnKill();
+
   kakao.KakaoSdk.init(nativeAppKey: 'b518f7790732911b6fb384439e147353');
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(
     EasyLocalization(
@@ -37,6 +116,8 @@ void main() async{
     ),
   );
 }
+
+
 
 class _App extends StatelessWidget {
   const _App({Key? key}) : super(key: key);
