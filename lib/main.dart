@@ -68,7 +68,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async{
 
 
 Future<void> setNotificationOnKill() async {
-
   print("###########setNotificationOnKill###########");
   bool success;
   final _notificationWhenAppIsKilledPlugin = NotificationWhenAppIsKilled();
