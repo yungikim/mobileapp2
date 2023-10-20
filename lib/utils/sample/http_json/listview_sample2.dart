@@ -56,7 +56,7 @@ class _ListViewSample2State extends State<ListViewSample2> {
         return Dialog(
           child: Container(
             width: MediaQuery.of(context).size.width * 0.7,
-            height: isPortrait ? 390 : 390,
+            height: isPortrait ? 390 : 300,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10), color: Colors.white),
             child: Column(
