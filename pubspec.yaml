@@ -59,6 +59,8 @@ dependencies:
   firebase_messaging: ^14.7.0
   flutter_local_notifications: ^16.1.0
   notification_when_app_is_killed: ^0.0.4
+  fluttertoast: ^8.2.2
+
   #intl: ^0.18.1
 
 dev_dependencies:
@@ -94,6 +96,7 @@ flutter:
     - asset/images/on_boarding_images/
     - asset/images/logo/
     - asset/translations/
+    - asset/images/listviewsample/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
