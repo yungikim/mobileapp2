@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mobileapp/utils/sample/http_json/json_parse.dart';
 import 'package:mobileapp/utils/sample/http_json/listview_sample2.dart';
+import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home.dart';
 import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:mobileapp/utils/sample/login_sample2.dart';
@@ -53,6 +54,15 @@ class SamplePage extends StatelessWidget {
                 Get.to(() => const ListViewSample2());
               },
               child: const Text("List view sample2"),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(() => MyHomeScroll(title: 'Infinite Scroll'));
+              },
+              child: const Text("Infinite Scroll"),
             )
           ],
         ),
