@@ -20,6 +20,7 @@ class TAppTheme{
     elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
     outlinedButtonTheme: TOutLinedButtonTheme.lightOutlineButtonTheme,
     inputDecorationTheme: TTextFormFieldTheme.lightInputDecorationTheme,
+    useMaterial3: true,
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -30,6 +31,7 @@ class TAppTheme{
     floatingActionButtonTheme: FloatingActionButtonThemeData(),
     elevatedButtonTheme: TElevatedButtonTheme.darkElevatedButtonTheme,
     outlinedButtonTheme: TOutLinedButtonTheme.darkOutlineButtonTheme,
-    inputDecorationTheme: TTextFormFieldTheme.darkInputDecorationTheme
+    inputDecorationTheme: TTextFormFieldTheme.darkInputDecorationTheme,
+    useMaterial3: true,
   );
 }

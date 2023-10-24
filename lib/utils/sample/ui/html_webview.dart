@@ -1,0 +1,119 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+
+
+InAppLocalhostServer localhostServer = new InAppLocalhostServer(documentRoot: 'asset');
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  // if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android){
+  //     await InAppWebViewController.
+  // }
+  // if (!kIsWeb){
+  //   print("웹 서버 시작한다.");
+  //   await localhostServer.start();
+  // }
+  runApp(const MyApp());
+}
+
+void inx() async{
+  if (!kIsWeb){
+    print("웹 서버 시작한다.");
+    await localhostServer.start();
+  }
+}
+
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    inx();
+
+    return MaterialApp(
+      home: wapp(),
+    );
+  }
+}
+
+
+class wapp extends StatefulWidget {
+  const wapp({super.key});
+
+
+
+  @override
+  State<wapp> createState() => _wappState();
+}
+
+
+class _wappState extends State<wapp> {
+
+  late InAppWebViewController webView;
+
+  @override
+  void dispose(){
+    localhostServer.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        //  appBar: AppBar(title: Text("In App Webview"),),
+        body: Container(
+
+          child: InAppWebView(
+            //initialFile: "assets/html/index.html",
+            initialUrlRequest: URLRequest(
+                url: Uri.parse('http://localhost:8080/html/index.html?open&ver=1.0')
+            ),
+            initialOptions: InAppWebViewGroupOptions(
+                android: AndroidInAppWebViewOptions(useHybridComposition: true),
+                ios: IOSInAppWebViewOptions(
+                  allowsInlineMediaPlayback: true,
+                ),
+                crossPlatform: InAppWebViewOptions(
+                    useShouldOverrideUrlLoading: true,
+                    mediaPlaybackRequiresUserGesture: false
+                )
+            ),
+
+            onWebViewCreated: (controller) {
+              controller.addJavaScriptHandler(handlerName: 'handlerFoo', callback: (args) {
+                // return data to the JavaScript side!
+                return {
+                  'bar': 'bar_value', 'baz': 'baz_value'
+                };
+              });
+
+              controller.addJavaScriptHandler(handlerName: 'handlerFooWithArgs', callback: (args) {
+                print(args[0]);
+                return {"name" : "김윤기"};
+                // it will print: [1, true, [bar, 5], {foo: baz}, {bar: bar_value, baz: baz_value}]
+              });
+            },
+            onConsoleMessage: (controller, consoleMessage) {
+              print(consoleMessage.message);
+
+              // it will print: {message: {"bar":"bar_value","baz":"baz_value"}, messageLevel: 1}
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+

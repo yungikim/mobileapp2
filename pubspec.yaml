@@ -43,7 +43,6 @@ dependencies:
   logger: any  #for logging purpose
   flutter_riverpod: ^2.3.6
   multi_image_picker: ^4.8.1
-  webview_flutter: ^4.2.2
   get: ^4.6.5
   google_fonts: ^6.1.0
   liquid_swipe: ^3.1.0
@@ -60,6 +59,10 @@ dependencies:
   flutter_local_notifications: ^16.1.0
   notification_when_app_is_killed: ^0.0.4
   fluttertoast: ^8.2.2
+  lottie: ^2.7.0
+  flutter_inappwebview: ^5.8.0
+
+
 
   #intl: ^0.18.1
 
@@ -97,6 +100,8 @@ flutter:
     - asset/images/logo/
     - asset/translations/
     - asset/images/listviewsample/
+    - asset/lottie/
+    - asset/html/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

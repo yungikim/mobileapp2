@@ -7,6 +7,8 @@ import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home.dart';
 import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:mobileapp/utils/sample/login_sample2.dart';
+import 'package:mobileapp/utils/sample/ui/html_webview.dart';
+import 'package:mobileapp/utils/sample/ui/navigation_bar.dart';
 
 import 'features/screens/splash/splashscreen.dart';
 
@@ -63,6 +65,23 @@ class SamplePage extends StatelessWidget {
                 Get.to(() => MyHomeScroll(title: 'Infinite Scroll'));
               },
               child: const Text("Infinite Scroll"),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(() => NavSample());
+                },
+                child: Text("Navigation bar")),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(() => MyApp());
+              },
+              child: Text("html webview"),
             )
           ],
         ),

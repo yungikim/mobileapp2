@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -20,6 +22,8 @@ import 'package:notification_when_app_is_killed/model/args_for_ios.dart' as iosl
 import 'package:notification_when_app_is_killed/model/args_for_kill_notification.dart';
 import 'package:notification_when_app_is_killed/notification_when_app_is_killed.dart';
 import 'dart:async';
+
+
 
 //앱에서 지원하는 언어 리스트 변수
 final supportedLocales =[
@@ -91,7 +95,16 @@ Future<void> setNotificationOnKill() async {
 
 }
 
+class MyHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext? context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+  }
+}
+
 void main() async{
+  HttpOverrides.global = new MyHttpOverrides();  //Network.Image, Http로 ReverseProxy형태의 호출시 SSL에러 처리
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -100,6 +113,8 @@ void main() async{
 
   kakao.KakaoSdk.init(nativeAppKey: 'b518f7790732911b6fb384439e147353');
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  
 
   runApp(
     EasyLocalization(
@@ -136,7 +151,18 @@ class _App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
+
+
       home: const SamplePage(),
     );
   }
 }
+
+
+// class MyHttpOverrides extends HttpOverrides{
+//   @override
+//   HttpClient createHttpClient(SecurityContext? context){
+//     return super.createHttpClient(context)
+//       ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true as bool Function(X509Certificate cert, String host, int port)?;
+//   }
+// }
