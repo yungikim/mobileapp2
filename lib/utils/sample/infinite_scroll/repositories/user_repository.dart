@@ -2,13 +2,21 @@ import 'dart:convert';
 
 
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/response/response.dart';
 
 
 import '../models/user.dart';
-import 'package:get/get_connect/http/src/response/response.dart' as Response;
+
 
 
 class UserRepositry extends GetConnect{
+
+  UserRepositry(){
+    allowAutoSignedCert = true;
+    timeout = const Duration(seconds: 30);
+
+  }
+
   final String _baseUrl = "https://www.gallery360.co.kr/load_artist_public.mon";
   Future<List<User>> fetchUsers(int page, int limit) async{
 
@@ -31,13 +39,33 @@ class UserRepositry extends GetConnect{
      e.printError();
      return <User>[];
     }
+  }
+}
 
+class ApiClient extends GetConnect implements GetxService{
+  late String token;
+  final String appBaseUrl;
+  late Map<String, String> _mainHeaders;
 
-  // return List<User>.from(data.map((e) => User.fromJson(e)));
+  ApiClient({required this.appBaseUrl}){
+    baseUrl = appBaseUrl;
+    timeout = const Duration(seconds: 30);
+    //token = AppConstance.TOKEN;
+    allowAutoSignedCert = true;
 
-
+    _mainHeaders = {
+      'Content-type' : 'application/json, charset=UTF-8',
+      'Authorization' : 'Bearer $token',
+    };
   }
 
-
+  Future<Response> getData(String url) async{
+    try{
+      Response response = await get(url);
+      return response;
+    }catch(e){
+      return Response(statusCode:1, statusText: e.toString());
+    }
+  }
 
 }
