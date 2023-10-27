@@ -65,8 +65,8 @@ class _ListViewSample2State extends State<ListViewSample2> {
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
                     image,
-                    width: isPortrait ? 200 : 100,
-                    height: isPortrait ? 200 : 100,
+                    width: isPortrait ? 200 : 60,
+                    height: isPortrait ? 170 : 80,
                   ),
                 ),
                 const SizedBox(
