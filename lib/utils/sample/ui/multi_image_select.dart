@@ -108,7 +108,7 @@ class _MultiImageSelectState extends State<MultiImageSelect> {
               : null,
           title: Text(isMulitSelectionEnabled
               ? getHeaderCountText()
-              : tr("selectimage"), style: const TextStyle(fontSize: 20),),
+              : tr("selectimage"), style: const TextStyle(fontSize: 20, fontFamily: 'NotoSans', fontWeight: FontWeight.bold),),
           actions: [
             Visibility(
               visible: isMulitSelectionEnabled ? true : false,

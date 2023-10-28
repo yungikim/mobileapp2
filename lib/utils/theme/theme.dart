@@ -12,6 +12,7 @@ class TAppTheme{
 
 
   static ThemeData lightTheme = ThemeData(
+    fontFamily: 'NotoSans',
     primarySwatch: Colors.blue,
     brightness: Brightness.light,
     textTheme: TTextTheme.lightTextTheme,
@@ -24,6 +25,7 @@ class TAppTheme{
   );
 
   static ThemeData darkTheme = ThemeData(
+    fontFamily: 'NotoSans',
     primarySwatch: Colors.yellow,
     brightness: Brightness.dark,
     textTheme: TTextTheme.darkTextTheme,
