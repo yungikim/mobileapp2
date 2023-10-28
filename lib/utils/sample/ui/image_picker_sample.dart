@@ -21,7 +21,13 @@ class _ImagePickerSampleState extends State<ImagePickerSample> {
   HashSet selectedItem = new HashSet();
 
   multiImagePicker() async {
-    final List<XFile> pickerImage = await _imagePicker.pickMultiImage();
+    final List<XFile> pickerImage = await _imagePicker.pickMultiImage(imageQuality: 10);
+
+    if(pickerImage.length>4){
+
+      return;
+    }
+
     if (pickerImage != null) {
       pickerImage.forEach((e) {
         multiImages.add(File(e.path));

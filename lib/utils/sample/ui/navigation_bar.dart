@@ -70,13 +70,16 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    var height = MediaQuery.of(context).size.height * 0.7;
+
     return Scaffold(
       body: Center(
 
         child: Column(
           children: [
             Text("Home"),
-            Lottie.asset("asset/lottie/animation1.json"),
+            Lottie.asset("asset/lottie/animation1.json", height: height),
           ],
         ),
 
@@ -90,12 +93,13 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height * 0.7;
     return Scaffold(
       body: Center(
         child: Column(
           children: [
             Text("Search"),
-            Lottie.asset("asset/lottie/animation_search.json"),
+            Lottie.asset("asset/lottie/animation_search.json", height: height),
           ],
         ),
       ),
@@ -109,12 +113,13 @@ class Setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height * 0.7;
     return Scaffold(
       body: Center(
         child: Column(
           children: [
             Text("Setting"),
-            Lottie.asset("asset/lottie/animation_settings.json"),
+            Lottie.asset("asset/lottie/animation_settings.json", height: height),
           ],
         ),
       ),

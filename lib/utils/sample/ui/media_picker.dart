@@ -110,7 +110,7 @@ class _MediaPickerState extends State<MediaPicker> {
         Positioned.fill(
           child: Padding(
             padding: EdgeInsets.all(
-              selectedAssetList.contains(assetEntity) == true ? 15 : 0
+              selectedAssetList.contains(assetEntity) == true ? 10 : 0
             ),
             child: AssetEntityImage(
               assetEntity,
@@ -174,7 +174,6 @@ class _MediaPickerState extends State<MediaPicker> {
     );
 
   void selectAsset({required AssetEntity assetEntity}){
-    print("온다");
     if (selectedAssetList.contains(assetEntity)){
       setState(() {
         selectedAssetList.remove(assetEntity);
