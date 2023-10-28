@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:photo_manager/photo_manager.dart';
 
@@ -134,8 +136,10 @@ class _MultiImageSelectState extends State<MultiImageSelect> {
         body: GridView.builder(
           physics: const BouncingScrollPhysics(),
           itemCount: selectedAssetList.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 3),
+          ),
           itemBuilder: (context, index) {
             AssetEntity assetEntity = selectedAssetList[index];
             return getGridItem(assetEntity);
