@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mobileapp/features/screens/on_boarding/on_boarding_screen.dart';
 import 'package:mobileapp/utils/sample/http_json/json_parse.dart';
 import 'package:mobileapp/utils/sample/http_json/listview_sample2.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home.dart';
 import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:mobileapp/utils/sample/login_sample2.dart';
+import 'package:mobileapp/utils/sample/onBoarding/onboarding.dart';
 import 'package:mobileapp/utils/sample/ui/html_webview.dart';
 import 'package:mobileapp/utils/sample/ui/image_picker_sample.dart';
 import 'package:mobileapp/utils/sample/ui/multi_image_select.dart';
@@ -35,6 +37,14 @@ class SamplePage extends StatelessWidget {
                     Get.to(() => const SplashScreen());
                   },
                   child: const Text("Splash Screen1")),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => const OnBoardingScreen2());
+                  },
+                  child: const Text("OnBoarding Screen")),
               const SizedBox(
                 height: 20,
               ),

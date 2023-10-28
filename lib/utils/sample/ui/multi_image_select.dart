@@ -144,8 +144,8 @@ class _MultiImageSelectState extends State<MultiImageSelect> {
           physics: const BouncingScrollPhysics(),
           itemCount: selectedAssetList.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 3),
+            crossAxisCount: 3,
+         //   childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 3),
           ),
           itemBuilder: (context, index) {
             AssetEntity assetEntity = selectedAssetList[index];

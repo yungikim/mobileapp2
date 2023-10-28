@@ -1,6 +1,30 @@
 import 'package:flutter/material.dart';
 
 class CommonUtil{
+  static bool isDarkMode(BuildContext context){
+    return Theme.of(context).brightness == Brightness.dark;
+  }
+
+  static String truncateText(String text, int maxLength){
+    if (text.length <= maxLength){
+      return text;
+    }else{
+      return "${text.substring(0, maxLength)}...";
+    }
+  }
+
+  static Size screenSize(BuildContext context){
+    return MediaQuery.of(context).size;
+  }
+
+  static double screenHeight(BuildContext context){
+    return MediaQuery.of(context).size.height;
+  }
+
+  static double screenWidth(BuildContext context){
+    return MediaQuery.of(context).size.width;
+  }
+
   static Future showAlertDialog(BuildContext context, String title, String content) async {
     return await showDialog(
       context: context,
@@ -28,7 +52,19 @@ class CommonUtil{
     );
   }
 
-
+  static void showAlert(BuildContext context, String title, String message){
+    showDialog(context: context, builder: (context){
+      return AlertDialog(
+        title: Text(title),
+        content: Text(message),
+        actions: [
+          TextButton(onPressed: (){
+            Navigator.of(context).pop();
+          }, child: const Text("OK"))
+        ],
+      );
+    });
+  }
 
   static void Alert(context, title, content){
     showDialog(
