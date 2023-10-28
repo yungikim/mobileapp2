@@ -19,6 +19,7 @@ class MultiImageSelect extends StatefulWidget {
 }
 
 class _MultiImageSelectState extends State<MultiImageSelect> {
+  final int maxcount = 10;
   List<AssetEntity> selectedAssetList = [];
 
   bool isMulitSelectionEnabled = false;
@@ -74,14 +75,20 @@ class _MultiImageSelectState extends State<MultiImageSelect> {
     //CommonUtil.showPopup(context, title, "", content);
     // CommonUtil.Alert(context, title, content);
 
-    CommonUtil.showAlertDialog(context, "전송","선택된 이미지로 전시를 생성하시겠습니까?").then((value) {
-      print(value);
-      if (value == "OK"){
-        printPath(selectedAssetList);
-      }else{
-        print("취소한다");
-      }
-    });
+    if (selectedAssetList.length > maxcount){
+      CommonUtil.showAlertDialog(context, "Error", "이미지 선택 최대건수 ${maxcount}를 초과하였습니다\n초과분을 삭제해 주세요");
+    }else{
+      CommonUtil.showAlertDialog(context, "전송","선택된 이미지로 전시를 생성하시겠습니까?").then((value) {
+        print(value);
+        if (value == "OK"){
+
+          printPath(selectedAssetList);
+        }else{
+          print("취소한다");
+        }
+      });
+    }
+
   }
 
   @override
@@ -147,7 +154,7 @@ class _MultiImageSelectState extends State<MultiImageSelect> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            pickAssets(maxCount: 10, requestType: RequestType.image,);
+            pickAssets(maxCount: maxcount, requestType: RequestType.image,);
           },
           child: const Icon(Iconsax.image5),
         ),

@@ -112,19 +112,24 @@ class _MediaPickerState extends State<MediaPicker> {
             padding: EdgeInsets.all(
               selectedAssetList.contains(assetEntity) == true ? 10 : 0
             ),
-            child: AssetEntityImage(
-              assetEntity,
-              isOriginal: false,
-              thumbnailSize: const ThumbnailSize.square(250),
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return const Center(
-                  child: Icon(
-                    Icons.error,
-                    color: Colors.red,
-                  ),
-                );
+            child: GestureDetector(
+              onTap: (){
+                selectAsset(assetEntity: assetEntity);
               },
+              child: AssetEntityImage(
+                assetEntity,
+                isOriginal: false,
+                thumbnailSize: const ThumbnailSize.square(250),
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Center(
+                    child: Icon(
+                      Icons.error,
+                      color: Colors.red,
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ),
