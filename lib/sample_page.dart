@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mobileapp/utils/sample/http_json/json_parse.dart';
 import 'package:mobileapp/utils/sample/http_json/listview_sample2.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home.dart';
@@ -8,6 +9,7 @@ import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:mobileapp/utils/sample/login_sample2.dart';
 import 'package:mobileapp/utils/sample/ui/html_webview.dart';
+import 'package:mobileapp/utils/sample/ui/image_picker_sample.dart';
 import 'package:mobileapp/utils/sample/ui/multi_image_select.dart';
 import 'package:mobileapp/utils/sample/ui/navigation_bar.dart';
 
@@ -93,6 +95,15 @@ class SamplePage extends StatelessWidget {
                   Get.to(() => const MultiImageSelect());
                 },
                 child: const Text("Image Multi select"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.to(() => const ImagePickerSample());
+                },
+                child: const Text("Image Picker Sample"),
               )
             ],
           ),
