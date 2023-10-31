@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//https://www.youtube.com/watch?v=ZMg_syAIoVo&t=1007
 class CardImageUI extends StatefulWidget {
   const CardImageUI({Key? key}) : super(key: key);
 
