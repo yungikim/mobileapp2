@@ -10,6 +10,7 @@ import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:mobileapp/utils/sample/login_sample2.dart';
 import 'package:mobileapp/utils/sample/onBoarding/onboarding.dart';
+import 'package:mobileapp/utils/sample/ui/card_image_ui.dart';
 import 'package:mobileapp/utils/sample/ui/html_webview.dart';
 import 'package:mobileapp/utils/sample/ui/image_picker_sample.dart';
 import 'package:mobileapp/utils/sample/ui/multi_image_select.dart';
@@ -114,6 +115,15 @@ class SamplePage extends StatelessWidget {
                   Get.to(() => const ImagePickerSample());
                 },
                 child: const Text("Image Picker Sample"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.to(() => const CardImageUI());
+                },
+                child: const Text("Card Image Sample"),
               )
             ],
           ),
