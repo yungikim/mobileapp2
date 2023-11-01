@@ -115,7 +115,7 @@ class _MyHomeScrollState extends State<MyHomeScroll> {
                                 ),
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               width: double.infinity,
                            //   decoration: BoxDecoration(border: Border.all()),
                               child: Row(
@@ -134,23 +134,17 @@ class _MyHomeScrollState extends State<MyHomeScroll> {
                                                     ?.replaceAll("&#40;", "(")
                                                     .replaceAll("&#41;", ")") ??
                                                 "", maxLines: 1,
-                                            style: TextStyle(fontSize: 12), softWrap: true,
+                                            style: const TextStyle(fontSize: 12), softWrap: true,
                                           ),
                                         ),
                                         Text("${state.users[index].name?.split('-spl-')[0]} " ??
-                                              "", style: TextStyle(fontSize: 10), maxLines: 1,)
+                                              "", style: const TextStyle(fontSize: 10), maxLines: 1,)
                                       ],
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      child: Icon(Icons.favorite, color: Colors.grey[400],),
-                                      decoration: BoxDecoration(
-
-                                        //border: Border.all(color: Colors.red)
-                                      ),
-                                    ),
+                                    child: Icon(Icons.favorite, color: Colors.grey[400],),
                                   )
                                 ],
                               ),
