@@ -18,7 +18,7 @@ class _ImagePickerSampleState extends State<ImagePickerSample> {
   List<File> multiImages = [];
 
   bool isMulitSelectionEnabled = false;
-  HashSet selectedItem = new HashSet();
+  HashSet selectedItem2 = new HashSet();
 
   multiImagePicker() async {
     final List<XFile> pickerImage = await _imagePicker.pickMultiImage(imageQuality: 10);
@@ -39,13 +39,13 @@ class _ImagePickerSampleState extends State<ImagePickerSample> {
 
   deleteItem() {
     //선택된 항목을 제거한다.
-    selectedItem.forEach((element) {
+    selectedItem2.forEach((element) {
       multiImages.remove(element);
     });
     //항목을 삭제하면 상태를 변경해 준다.
     setState(() {
       isMulitSelectionEnabled = false;
-      selectedItem.clear();
+      selectedItem2.clear();
     });
   }
 
@@ -76,7 +76,7 @@ class _ImagePickerSampleState extends State<ImagePickerSample> {
                   onPressed: () {
                     setState(() {
                       isMulitSelectionEnabled = false;
-                      selectedItem.clear();
+                      selectedItem2.clear();
                     });
                   },
                   icon: const Icon(Icons.close))
@@ -174,18 +174,18 @@ class _ImagePickerSampleState extends State<ImagePickerSample> {
   }
 
   String getHeaderCountText() {
-    return selectedItem.isNotEmpty
-        ? "${selectedItem.length} item selectd"
+    return selectedItem2.isNotEmpty
+        ? "${selectedItem2.length} item selectd"
         : "No item selected";
   }
 
   void doMultiSelection(File file) {
     if (isMulitSelectionEnabled) {
       setState(() {
-        if (selectedItem.contains(file)) {
-          selectedItem.remove(file);
+        if (selectedItem2.contains(file)) {
+          selectedItem2.remove(file);
         } else {
-          selectedItem.add(file);
+          selectedItem2.add(file);
         }
       });
     }
@@ -211,11 +211,11 @@ class _ImagePickerSampleState extends State<ImagePickerSample> {
                 file,
                 fit: BoxFit.cover,
                 color: Colors.black
-                    .withOpacity(selectedItem.contains(file) ? 1 : 0),
+                    .withOpacity(selectedItem2.contains(file) ? 1 : 0),
                 colorBlendMode: BlendMode.color,
               ),
               Visibility(
-                visible: selectedItem.contains(file),
+                visible: selectedItem2.contains(file),
                 child: Align(
                   alignment: Alignment.center,
                   child: Icon(
