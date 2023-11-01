@@ -65,66 +65,103 @@ class _MyHomeScrollState extends State<MyHomeScroll> {
           ],
         ),
         body: Obx(
-          () => status == 0 ? ListView.builder(
-              controller: scrollController,
-              itemCount: state.hasMore.value
-                  ? state.users.length + 1
-                  : state.users.length,
-              itemBuilder: (context, index) {
-                if (index < state.users.length) {
-                  return  ArtistList(
-                          state: state,
-                          index: index,
-                        );
-                } else {
-                  return const Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.black,
-                      ),
-                    ),
-                  );
-                }
-              }) : GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                      itemCount: state.hasMore.value
-                          ? state.users.length + 1
-                          : state.users.length,
-                      controller: scrollController,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Card(
-                            elevation: 5,
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: NetworkImage(
-                                            "https://www.gallery360.co.kr/artimage/${state.users[index].email}/art/preview/${state.users[index].avatar}.jpg" ??
-                                                ""),
-                                        fit: BoxFit.cover),
-                                  ),
-                                ),
-                                ListTile(
-                                  title: Text(state.users[index].nickname
-                                      ?.replaceAll("&#40;", "(")
-                                      .replaceAll("&#41;", ")") ??
-                                      ""),
-                                  subtitle: Text("${state.users[index].name} | ${state.users[index].email?.split('-spl-')[0]}" ??
-                                      ""),
-                                  trailing: Icon(Icons.favorite),
-                                )
-                              ],
-                            ),
+          () => status == 0
+              ? ListView.builder(
+                  controller: scrollController,
+                  itemCount: state.hasMore.value
+                      ? state.users.length + 1
+                      : state.users.length,
+                  itemBuilder: (context, index) {
+                    if (index < state.users.length) {
+                      return ArtistList(
+                        state: state,
+                        index: index,
+                      );
+                    } else {
+                      return const Padding(
+                        padding: EdgeInsets.all(15),
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: Colors.black,
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    }
+                  })
+              : GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemCount: state.hasMore.value
+                      ? state.users.length + 1
+                      : state.users.length,
+                  controller: scrollController,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Card(
+                        elevation: 5,
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Container(
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          "https://www.gallery360.co.kr/artimage/${state.users[index].email}/art/preview/${state.users[index].avatar}.jpg" ??
+                                              ""),
+                                      fit: BoxFit.cover),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: double.infinity,
+                           //   decoration: BoxDecoration(border: Border.all()),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          width: (MediaQuery.of(context).size.width / 2) - 60,
+                                          child: Text(
+                                            state.users[index].nickname
+                                                    ?.replaceAll("&#40;", "(")
+                                                    .replaceAll("&#41;", ")") ??
+                                                "", maxLines: 1,
+                                            style: TextStyle(fontSize: 12), softWrap: true,
+                                          ),
+                                        ),
+                                        Text("${state.users[index].name?.split('-spl-')[0]} " ??
+                                              "", style: TextStyle(fontSize: 10), maxLines: 1,)
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child: Container(
+                                      child: Icon(Icons.favorite, color: Colors.grey[400],),
+                                      decoration: BoxDecoration(
 
+                                        //border: Border.all(color: Colors.red)
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
         ));
   }
 }
