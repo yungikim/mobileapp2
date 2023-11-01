@@ -104,6 +104,9 @@ class MyHttpOverrides extends HttpOverrides{
 }
 
 void main() async{
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent
+  ));
   HttpOverrides.global = new MyHttpOverrides();  //Network.Image, Http로 ReverseProxy형태의 호출시 SSL에러 처리
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();

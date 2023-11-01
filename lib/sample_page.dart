@@ -11,6 +11,8 @@ import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:mobileapp/utils/sample/login_sample2.dart';
 import 'package:mobileapp/utils/sample/onBoarding/onboarding.dart';
 import 'package:mobileapp/utils/sample/ui/card_image_ui.dart';
+import 'package:mobileapp/utils/sample/ui/customerscrollview_sliver2.dart';
+import 'package:mobileapp/utils/sample/ui/customescrollview_sliver.dart';
 import 'package:mobileapp/utils/sample/ui/html_webview.dart';
 import 'package:mobileapp/utils/sample/ui/image_picker_sample.dart';
 import 'package:mobileapp/utils/sample/ui/multi_image_select.dart';
@@ -121,9 +123,18 @@ class SamplePage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Get.to(() => const CardImageUI());
+                  Get.off(() => const CustomScrollViewWithSliver());
                 },
-                child: const Text("Card Image Sample"),
+                child: const Text("CustomScroll with Sliver"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.off(() => const CustomScrollWidthSlive2());
+                },
+                child: const Text("CustomScroll with Sliver2"),
               )
             ],
           ),
