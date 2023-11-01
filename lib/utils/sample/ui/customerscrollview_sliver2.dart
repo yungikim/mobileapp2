@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lottie/lottie.dart';
 
 class CustomScrollWidthSlive2 extends StatefulWidget {
   const CustomScrollWidthSlive2({Key? key}) : super(key: key);
@@ -82,15 +83,18 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
         controller: _scrollController,
         slivers: [
           SliverAppBar(
+            backgroundColor: Colors.pink,
             leading: Icon(Icons.menu),
             floating: false,
             pinned: true,
-           // title: Text("S L I V E R A P P B A R"),
+          //  title: Text("S L I V E R A P P B A R"),
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 color: Colors.pink,
+                child: Lottie.asset("asset/lottie/animation1.json"),
               ),
+              //background: Lottie.asset("asset/lottie/animation1.json"),
               title: const Text("S L I V E R A P P B A R", style: TextStyle(fontSize: 15),),
               centerTitle: true,
             ),
