@@ -67,7 +67,7 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
       bottomNavigationBar: AnimatedContainer(
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         curve: Curves.fastLinearToSlowEaseIn,
         height: visible ? 70 : 0,
         child: BottomNavigationBar(
@@ -91,7 +91,7 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
               background: Container(
                 color: Colors.pink,
               ),
-              title: Text("S L I V E R A P P B A R", style: TextStyle(fontSize: 15),),
+              title: const Text("S L I V E R A P P B A R", style: TextStyle(fontSize: 15),),
               centerTitle: true,
             ),
           ),
