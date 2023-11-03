@@ -68,15 +68,29 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
       bottomNavigationBar: AnimatedContainer(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 700),
+        // scale: visible ? 1 : 0.0,
+        // alignment: Alignment.bottomCenter,
         curve: Curves.fastLinearToSlowEaseIn,
-        height: visible ? 70 : 0,
-        child: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+        height: visible ? 60 : 0,
+        child: Wrap(
+          children: [
+             BottomNavigationBar(
+               type: BottomNavigationBarType.fixed,
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+                BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+              ],
+          ),
           ],
+          // child: BottomNavigationBar(
+          //   items: const [
+          //     BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
+          //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          //     BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          //   ],
+          // ),
         ),
       ),
       body: CustomScrollView(
@@ -88,7 +102,7 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
             floating: false,
             pinned: true,
           //  title: Text("S L I V E R A P P B A R"),
-            expandedHeight: 300,
+            expandedHeight: 200,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 color: Colors.pink,
@@ -114,7 +128,7 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
                   ),
                 );
               },
-              childCount: 100,
+              childCount: 10,
             ),
           )
 

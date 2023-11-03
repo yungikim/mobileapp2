@@ -135,7 +135,8 @@ class SamplePage extends StatelessWidget {
                   Get.off(() => const CustomScrollWidthSlive2());
                 },
                 child: const Text("CustomScroll with Sliver2"),
-              )
+              ),
+              SizedBox(height: 100,)
             ],
           ),
         ),
