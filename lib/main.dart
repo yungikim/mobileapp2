@@ -25,7 +25,7 @@ import 'dart:async';
 
 
 
-//앱에서 지원하는 언어 리스트 변수
+//앱에서 지원하는 언어 리스트 변수1
 final supportedLocales =[
   Locale('en','US'),
   Locale('ko','KR'),
