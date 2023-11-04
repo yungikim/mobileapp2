@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobileapp/features/screens/on_boarding/on_boarding_screen.dart';
+import 'package:mobileapp/utils/sample/chatting/chatting_main.dart';
 import 'package:mobileapp/utils/sample/http_json/json_parse.dart';
 import 'package:mobileapp/utils/sample/http_json/listview_sample2.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home.dart';
@@ -135,6 +136,15 @@ class SamplePage extends StatelessWidget {
                   Get.off(() => const CustomScrollWidthSlive2());
                 },
                 child: const Text("CustomScroll with Sliver2"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.off(() => const MainChat());
+                },
+                child: const Text("Chatting UI"),
               ),
               SizedBox(height: 100,)
             ],
