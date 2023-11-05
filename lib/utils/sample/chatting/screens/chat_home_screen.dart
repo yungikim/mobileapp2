@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobileapp/utils/sample/chatting/data/color_data.dart';
 import 'package:mobileapp/utils/sample/chatting/widgets/favorite_contact.dart';
-
 import '../widgets/category_selector.dart';
+import '../widgets/recent_chats.dart';
 
 class ChatHomeScreen extends StatefulWidget {
   const ChatHomeScreen({Key? key}) : super(key: key);
@@ -50,9 +51,10 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
                       topLeft: Radius.circular(30.0),
                       topRight: Radius.circular(30.0),
                     )),
-                child: Column(
+                child: const Column(
                   children: [
                     FavoriteContacts(),
+                    RecentChats(),
                   ],
                 ),
               ),
