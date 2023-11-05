@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:mobileapp/utils/sample/chatting/data/color_data.dart';
+import 'package:mobileapp/utils/sample/chatting/screens/chat_screen.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 import '../models/message_model.dart';
@@ -30,91 +33,96 @@ class RecentChats extends StatelessWidget {
             itemCount: chats.length,
             itemBuilder: (context, index) {
               final Message chat = chats[index];
-              return Container(
-                margin:
-                    const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 10.0),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
-                decoration: BoxDecoration(
-                  color: chat.unread ? const Color(0xFFFFEFEE) : Colors.white,
-                  borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(20.0),
-                    bottomRight: Radius.circular(20.0),
+              return GestureDetector(
+                onTap: (){
+                  Get.to(() => ChatScreen(user: chat.sender), transition: Transition.rightToLeft);
+                },
+                child: Container(
+                  margin:
+                      const EdgeInsets.only(top: 5.0, bottom: 5.0, right: 10.0),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
+                  decoration: BoxDecoration(
+                    color: chat.unread ? const Color(0xFFFFEFEE) : Colors.white,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(20.0),
+                      bottomRight: Radius.circular(20.0),
+                    ),
                   ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 35.0,
-                          backgroundImage: AssetImage(chat.sender.imageUrl),
-                        ),
-                        const SizedBox(
-                          width: 10.0,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              chat.sender.name,
-                              style: const TextStyle(
-                                color: Colors.grey,
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 5.0,
-                            ),
-                            Container(
-                              width: width - 210,
-                              child: Text(
-                                chat.text,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 35.0,
+                            backgroundImage: AssetImage(chat.sender.imageUrl),
+                          ),
+                          const SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                chat.sender.name,
                                 style: const TextStyle(
-                                  color: Colors.blueGrey,
+                                  color: Colors.grey,
                                   fontSize: 15.0,
-                                  fontWeight: FontWeight.w600,
-                                  overflow: TextOverflow.ellipsis,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          chat.time,
-                          style: TextStyle(
-                            color: Colors.blueGrey,
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
+                              const SizedBox(
+                                height: 5.0,
+                              ),
+                              Container(
+                                width: width - 210,
+                                child: Text(
+                                  chat.text,
+                                  style: const TextStyle(
+                                    color: Colors.blueGrey,
+                                    fontSize: 15.0,
+                                    fontWeight: FontWeight.w600,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                        SizedBox(height: 5.0,),
-                        chat.unread  ? Container(
-                          width: 40.0,
-                          height: 20.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30.0),
-                            color: primaryColor,
-                          ),
-                          child: Text(
-                            "New",
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            chat.time,
                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12.0,
+                              color: Colors.blueGrey,
+                              fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          alignment: Alignment.center,
-                        ) :  Text(''),
-                      ],
-                    ),
-                  ],
+                          SizedBox(height: 5.0,),
+                          chat.unread  ? Container(
+                            width: 40.0,
+                            height: 20.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.0),
+                              color: primaryColor,
+                            ),
+                            child: Text(
+                              "New",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            alignment: Alignment.center,
+                          ) :  Text(''),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
