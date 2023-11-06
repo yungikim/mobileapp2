@@ -101,6 +101,7 @@ class _MyHomeScrollState extends State<MyHomeScroll> {
                       child: Card(
                         elevation: 5,
                         child: Column(
+
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(5),

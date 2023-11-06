@@ -32,7 +32,7 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
   }
 
   void listen(){
-    // print("listen....");
+    print("listen....");
     final direction = _scrollController.position.userScrollDirection;
     // if (_scrollController.position.pixels >=2000){
     //   //조건을 변경할 수 있다. 특정 높이 이상 올라 갔을때 숨기기
@@ -83,15 +83,8 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
                 BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
               ],
-          ),
-          ],
-          // child: BottomNavigationBar(
-          //   items: const [
-          //     BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
-          //     BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          //     BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-          //   ],
-          // ),
+          ),],
+
         ),
       ),
       body: CustomScrollView(
