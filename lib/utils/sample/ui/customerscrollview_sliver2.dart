@@ -72,8 +72,9 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
         // scale: visible ? 1 : 0.0,
         // alignment: Alignment.bottomCenter,
         curve: Curves.fastLinearToSlowEaseIn,
-        height: visible ? 60 : 0,
+        height: visible ? 57 : 0,
         child: Wrap(
+          spacing: 0.0,
           children: [
              BottomNavigationBar(
                type: BottomNavigationBarType.fixed,

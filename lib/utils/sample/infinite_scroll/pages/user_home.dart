@@ -40,7 +40,7 @@ class _MyHomeScrollState extends State<MyHomeScroll> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text(
             widget.title,
-            style: TextStyle(color: Colors.black),
+            style: const TextStyle(color: Colors.black),
           ),
           elevation: 0,
           iconTheme: const IconThemeData(

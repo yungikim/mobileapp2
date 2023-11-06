@@ -124,7 +124,7 @@ class SamplePage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Get.off(() => const CustomScrollViewWithSliver());
+                  Get.to(() => const CustomScrollViewWithSliver());
                 },
                 child: const Text("CustomScroll with Sliver"),
               ),
@@ -133,7 +133,7 @@ class SamplePage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Get.off(() => const CustomScrollWidthSlive2());
+                  Get.to(() => const CustomScrollWidthSlive2());
                 },
                 child: const Text("CustomScroll with Sliver2"),
               ),
@@ -142,7 +142,7 @@ class SamplePage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Get.off(() => const MainChat());
+                  Get.to(() => const MainChat());
                 },
                 child: const Text("Chatting UI"),
               ),

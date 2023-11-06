@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 
 InAppLocalhostServer localhostServer = new InAppLocalhostServer(documentRoot: 'asset');
@@ -71,6 +73,15 @@ class _wappState extends State<wapp> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: (){
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+          ),
+          title: const Text("Local Web"),
+        ),
         //  appBar: AppBar(title: Text("In App Webview"),),
         body: Container(
 
