@@ -19,7 +19,7 @@ class UserHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.transparent,
           elevation: 0,
           title: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

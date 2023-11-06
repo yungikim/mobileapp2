@@ -7,7 +7,7 @@ class BubbleStories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           Container(
@@ -18,8 +18,8 @@ class BubbleStories extends StatelessWidget {
                 color: Colors.grey[400]
             ),
           ),
-          SizedBox(height: 5,),
-          Text(text),
+          const SizedBox(height: 5,),
+          Text(text, style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.w500),),
         ],
       ),
     );
