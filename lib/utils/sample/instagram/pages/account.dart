@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:linkify/linkify.dart';
 import 'package:mobileapp/utils/sample/instagram/widgets/bubble_stories.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/account_tab1.dart';
 import '../widgets/account_tab2.dart';
@@ -8,6 +11,12 @@ import '../widgets/account_tab4.dart';
 
 class UserAccount extends StatelessWidget {
   const UserAccount({Key? key}) : super(key: key);
+
+  Future<void> _onOpen(LinkableElement link) async {
+    if (!await launchUrl(Uri.parse(link.url))) {
+      throw Exception('Could not launch ${link.url}');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,21 +87,30 @@ class UserAccount extends StatelessWidget {
 
               //name and bio
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "koko",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2.0),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 2.0),
                       child: Text('i create apps & games'),
                     ),
-                    Text(
-                      'm.youtube.com/mitckoko/',
-                      style: TextStyle(color: Colors.blue),
+                    Linkify(
+                      onOpen: _onOpen,
+                     //   text: 'https://www.google.com 또는 https://www.naver.com 전화번호 @Cretezy +123456789 입니다',
+                      text: 'https://www.google.com 또는 전화번호 01032095570 입니다 dosa777@gmail.com',
+                      // style: TextStyle(color: Colors.grey),
+                      linkStyle: const TextStyle(color: Colors.blue),
+                      linkifiers: const [
+                        UserTagLinkifier(),
+                        PhoneNumberLinkifier(),
+                        EmailLinkifier(),
+                        UrlLinkifier(),
+                      ],
                     ),
                   ],
                 ),
