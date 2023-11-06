@@ -8,6 +8,7 @@ import 'package:mobileapp/utils/sample/http_json/json_parse.dart';
 import 'package:mobileapp/utils/sample/http_json/listview_sample2.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home_artist.dart';
+import 'package:mobileapp/utils/sample/instagram/instagram_home.dart';
 import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
 import 'package:mobileapp/utils/sample/login_sample2.dart';
@@ -155,6 +156,15 @@ class SamplePage extends StatelessWidget {
                   Get.to(() => const MainChat());
                 },
                 child: const Text("Chatting UI"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.off(() => const InstagramHome());
+                },
+                child: const Text("Instagram UI"),
               ),
               SizedBox(height: 100,)
             ],
