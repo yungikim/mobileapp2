@@ -99,7 +99,7 @@ class _CustomScrollWidthSlive2State extends State<CustomScrollWidthSlive2> {
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.pink,
-            leading: Icon(Icons.menu),
+            leading: const Icon(Icons.menu),
             floating: false,
             pinned: true,
           //  title: Text("S L I V E R A P P B A R"),
