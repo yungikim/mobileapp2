@@ -103,7 +103,7 @@ class UserAccount extends StatelessWidget {
                       onOpen: _onOpen,
                      //   text: 'https://www.google.com 또는 https://www.naver.com 전화번호 @Cretezy +123456789 입니다',
                       text: 'https://www.google.com 또는 전화번호 01032095570 입니다 dosa777@gmail.com',
-                      // style: TextStyle(color: Colors.grey),
+                      style: TextStyle(height: 1.8),
                       linkStyle: const TextStyle(color: Colors.blue),
                       linkifiers: const [
                         UserTagLinkifier(),
