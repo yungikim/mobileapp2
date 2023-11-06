@@ -17,8 +17,14 @@ class MediaServices {
   }
 
   Future loadAssets(AssetPathEntity selectedAlbum) async {
-    List<AssetEntity> assetList = await selectedAlbum.getAssetListRange(
-      start: 0, end: selectedAlbum.assetCount,);
-    return assetList;
+    print("ios Count : ${selectedAlbum.assetCount}");
+    if (selectedAlbum.assetCount == 0){
+      return List<AssetEntity>;
+    }else{
+      List<AssetEntity> assetList = await selectedAlbum.getAssetListRange(
+        start: 0, end: selectedAlbum.assetCount,);
+      return assetList;
+    }
+
   }
 }
