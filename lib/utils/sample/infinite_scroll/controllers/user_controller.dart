@@ -1,4 +1,5 @@
 
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -12,7 +13,13 @@ class UserController extends GetxController{
   RxString type = "1".obs;
   var hasMore = true.obs;
   var users = <User>[].obs;
-
+  Rx<User> userDetail = User(nickname: "",
+    name : "",
+    email : "",
+    avatar :  "",
+    ename : "",
+    artcount : 0,
+    vrcount: 0).obs;
 
 
 
@@ -48,6 +55,22 @@ class UserController extends GetxController{
       users.addAll(response.sublist(1, response.length));
       print(response);
       _page++;
+    }catch(e){
+      if (kDebugMode) print(e.toString());
+    }
+  }
+
+  Future artistDetail(String email) async{
+    try{
+      print("artistDetail Start.......");
+      print("email : ${email}");
+      User response = await _userRepositry.artistDetail(email);
+
+      print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+      print(response.email);
+
+
     }catch(e){
       if (kDebugMode) print(e.toString());
     }

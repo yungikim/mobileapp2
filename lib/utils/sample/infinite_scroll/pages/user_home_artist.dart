@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_detail_artist.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/util/image_card.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/util/loading_image.dart';
 
@@ -26,7 +27,6 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
   var selectkey = "1";
 
   late final ScrollController scrollerController2;
-
 
   late List<DropdownMenuItem<ValueOptions>> _valueItems;
 
@@ -85,7 +85,7 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
     double currentScroll = scrollerController2.position.pixels;
 
     if (maxScroll == currentScroll && state2.hasMore.value) {
-       state2.getUser();
+      state2.getUser();
     }
   }
 
@@ -131,7 +131,9 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
             ),
           ),
           centerTitle: true,
-          actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+          actions: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.search))
+          ],
         ),
         bottomNavigationBar: AnimatedContainer(
           duration: const Duration(milliseconds: 700),
@@ -156,15 +158,14 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
             ],
           ),
         ),
-
         body: Obx(
           () => CustomScrollView(
             controller: scrollerController2,
             slivers: [
-
               SliverAppBar(
                 backgroundColor: Colors.black,
-                automaticallyImplyLeading: false,    //leading 버튼을 숨긴다.
+                automaticallyImplyLeading: false,
+                //leading 버튼을 숨긴다.
                 // leading: IconButton(
                 //   onPressed: () {
                 //     Get.back();
@@ -190,7 +191,6 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
                   ),
                   title: const Text("A r t i s t"),
                   centerTitle: true,
-
                 ),
               ),
               SliverToBoxAdapter(
@@ -200,8 +200,14 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
                   children: [
                     Container(
                       width: 100,
+                      decoration: BoxDecoration(
+                          // border: Border.all(color: Colors.grey)
+                          ),
                       child: DropdownButton<ValueOptions>(
                         isExpanded: true,
+
+                        //  menuMaxHeight: 300.0,
+                        //  itemHeight: null,
                         underline: SizedBox(),
                         value: _selectedValue,
                         items: _valueItems,
@@ -210,8 +216,8 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
                             _selectedValue = newValue!;
                             state2.type.value = _selectedValue.key;
                             state2.refreshData();
-                           // state2.getUser();
-                           // print(_selectedValue.key);
+                            // state2.getUser();
+                            // print(_selectedValue.key);
                           });
                         },
                       ),
@@ -226,7 +232,7 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
                         // color: Colors.red,
                         child: TextField(
                           textInputAction: TextInputAction.search,
-                          onSubmitted: (value){
+                          onSubmitted: (value) {
                             print("search query : $value");
                             state2.users.value = <User>[];
                             state2.searchUser(value);
@@ -261,7 +267,19 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
                     : state2.users.length,
                 itemBuilder: (context, index) {
                   if (index < state2.users.length) {
-                    return ImageCard(index: index);
+                    return GestureDetector(
+                      onTap: () {
+                        print(state2.users[index].email.toString());
+                        Get.to(
+                          () => UserDetailArtist(
+                            email: state2.users[index].email.toString(),
+                          ),
+                          transition: Transition.rightToLeft,
+                          duration: Duration(microseconds: 500),
+                        );
+                      },
+                      child: ImageCard(index: index),
+                    );
                   } else {
                     return const LoadingImage();
                   }

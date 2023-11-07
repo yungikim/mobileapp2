@@ -19,6 +19,7 @@ class UserRepositry extends GetConnect{
 
   final String _baseUrl = "https://www.gallery360.co.kr/load_artist_public.mon";
   final String _baseUrl_search = "https://www.gallery360.co.kr/search_artist_public.mon";
+  final String _baseUrl_artist_detail = "https://www.gallery360.co.kr/load_artist_detail_public.mon";
 
   Future<List<User>> fetchUsers(int page, int limit, String type) async{
     try{
@@ -54,6 +55,29 @@ class UserRepositry extends GetConnect{
       return <User>[];
     }
   }
+
+  Future<User> artistDetail(String email) async{
+    try{
+      String url = "${_baseUrl_artist_detail}?email=$email";
+      print(url);
+      final response = await get(url);
+      final data = response.body;
+
+      return User(
+        nickname: data['nickname'],
+        name : data['name'],
+        email : data['email'],
+        avatar :  data['last_art_path'],
+        ename : data['name_eng'],
+        artcount : data['art_count'],
+        vrcount: data['vr_count'],
+      );
+    }catch(e){
+      e.printError();
+      return new User();
+    }
+  }
+
 }
 
 class ApiClient extends GetConnect implements GetxService{
