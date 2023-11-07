@@ -4,6 +4,7 @@ class User{
 
   User({this.nickname, this.name, this.email, this.avatar, this.ename, this.artcount, this.vrcount});
 
+
   factory User.fromJson(Map<String, dynamic> json){
     return User(
       nickname: json['nickname'],
