@@ -8,6 +8,7 @@ import 'package:mobileapp/utils/sample/http_json/json_parse.dart';
 import 'package:mobileapp/utils/sample/http_json/listview_sample2.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home_artist.dart';
+import 'package:mobileapp/utils/sample/infinite_scroll/pages/user_home_artist_new.dart';
 import 'package:mobileapp/utils/sample/instagram/instagram_home.dart';
 import 'package:mobileapp/utils/sample/login_sample.dart';
 import 'package:mobileapp/utils/sample/login_sample/firebase_login.dart';
@@ -94,6 +95,15 @@ class SamplePage extends StatelessWidget {
                   Get.to(() => const UserHomeArtist(title: 'Infinite Artist'));
                 },
                 child: const Text("Infinite Scroll Artist"),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.to(() => const UserHomeArtistNew());
+                },
+                child: const Text("Infinite Scroll Artist New"),
               ),
               const SizedBox(
                 height: 20,
