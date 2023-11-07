@@ -15,11 +15,11 @@ class UserDetailArtist extends StatefulWidget {
 }
 
 class _UserDetailArtistState extends State<UserDetailArtist> {
-  final UserController userinfo = Get.put(UserController());
+  final UserController _userController = Get.put(UserController());
 
   @override
   void initState() {
-    userinfo.artistDetail(widget.email.toString());
+    _userController.artistDetail(widget.email.toString());
     super.initState();
   }
 
@@ -32,74 +32,75 @@ class _UserDetailArtistState extends State<UserDetailArtist> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          body: NestedScrollView(
-            headerSliverBuilder: (context, innerBoxIsScrolled) => [
-              SliverAppBar(
-                centerTitle: true,
-                leading: IconButton(
-                  onPressed: (){
-                    Get.back();
-                  },
-                  icon: Icon(Icons.arrow_back_ios),
-                ),
-                backgroundColor: Colors.black,
-                title: Text("작가 상세보기"),
-                expandedHeight: 300,
-                pinned: true,
-                floating: false,
-                forceElevated: innerBoxIsScrolled,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Container(
-                    color: Colors.black,
-                    child: const Image(
-                      image: AssetImage("asset/images/logo/main-visual.jpg"),
-                      fit: BoxFit.cover,
-                    ),
+      home:  DefaultTabController(
+          length: 3,
+          child: Scaffold(
+            body: NestedScrollView(
+              headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                SliverAppBar(
+                  centerTitle: true,
+                  leading: IconButton(
+                    onPressed: (){
+                      Get.back();
+                    },
+                    icon: Icon(Icons.arrow_back_ios),
                   ),
-                  //title: Text("작가 상세보기"),
-                ),
-                actions: [
-                //  IconButton(onPressed: (){}, icon: Icon(Icons.close, size: 30.0,)),
-                ],
-                bottom: const TabBar(
-                  indicatorColor: Colors.red,
-                  labelStyle: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                  unselectedLabelStyle: TextStyle(fontSize: 17.0),
-                  tabs: [
-                    Tab(
-                      child: Text("작가 소개", style: TextStyle(fontSize: 20),),
+                  backgroundColor: Colors.black,
+                  title: Obx(() =>Text(_userController.userinfo.value.email)),
+                  expandedHeight: 300,
+                  pinned: true,
+                  floating: false,
+                  forceElevated: innerBoxIsScrolled,
+                  flexibleSpace: FlexibleSpaceBar(
+                    background: Container(
+                      color: Colors.black,
+                      child: const Image(
+                        image: AssetImage("asset/images/logo/main-visual.jpg"),
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    Tab(text: '작품',),
-                    Tab(text: 'VR갤러리',),
+                    //title: Text("작가 상세보기"),
+                  ),
+                  actions: [
+                  //  IconButton(onPressed: (){}, icon: Icon(Icons.close, size: 30.0,)),
                   ],
+                  bottom: const TabBar(
+                    indicatorColor: Colors.red,
+                    labelStyle: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    unselectedLabelStyle: TextStyle(fontSize: 17.0),
+                    tabs: [
+                      Tab(
+                        child: Text("작가 소개", style: TextStyle(fontSize: 20),),
+                      ),
+                      Tab(text: '작품',),
+                      Tab(text: 'VR갤러리',),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-            body: TabBarView(
-              children: [
-                ListView.builder(itemBuilder: (context, index){
-                  return ListTile(
-                    title: Text("Tab 1 content $index"),
-                  );
-                }),
-                ListView.builder(itemBuilder: (context, index){
-                  return ListTile(
-                    title: Text("Tab 2 content $index"),
-                  );
-                }),
-                ListView.builder(itemBuilder: (context, index){
-                  return ListTile(
-                    title: Text("Tab 3 content $index"),
-                  );
-                })
               ],
+              body: TabBarView(
+                children: [
+                  ListView.builder(itemBuilder: (context, index){
+                    return ListTile(
+                      title: Text("Tab 1 content $index"),
+                    );
+                  }),
+                  ListView.builder(itemBuilder: (context, index){
+                    return ListTile(
+                      title: Text("Tab 2 content $index"),
+                    );
+                  }),
+                  ListView.builder(itemBuilder: (context, index){
+                    return ListTile(
+                      title: Text("Tab 3 content $index"),
+                    );
+                  })
+                ],
+              ),
             ),
           ),
         ),
-      ),
+
     );
   }
 }

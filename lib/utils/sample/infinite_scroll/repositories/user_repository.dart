@@ -56,25 +56,21 @@ class UserRepositry extends GetConnect{
     }
   }
 
-  Future<User> artistDetail(String email) async{
+  Future<UserDetail> artistDetail(String email) async{
     try{
       String url = "${_baseUrl_artist_detail}?email=$email";
       print(url);
       final response = await get(url);
       final data = response.body;
 
-      return User(
-        nickname: data['nickname'],
-        name : data['name'],
-        email : data['email'],
-        avatar :  data['last_art_path'],
-        ename : data['name_eng'],
-        artcount : data['art_count'],
-        vrcount: data['vr_count'],
+     // return jsonDecode(data);
+
+      return UserDetail(
+        email : data['email'].toString().split("-spl-")[0],
       );
     }catch(e){
       e.printError();
-      return new User();
+      return UserDetail(email: "");
     }
   }
 

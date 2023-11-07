@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -13,14 +14,7 @@ class UserController extends GetxController{
   RxString type = "1".obs;
   var hasMore = true.obs;
   var users = <User>[].obs;
-  Rx<User> userDetail = User(nickname: "",
-    name : "",
-    email : "",
-    avatar :  "",
-    ename : "",
-    artcount : 0,
-    vrcount: 0).obs;
-
+  var userinfo = UserDetail(email: "").obs;
 
 
   Future getUser() async{
@@ -64,16 +58,20 @@ class UserController extends GetxController{
     try{
       print("artistDetail Start.......");
       print("email : ${email}");
-      User response = await _userRepositry.artistDetail(email);
+      UserDetail response = await _userRepositry.artistDetail(email);
 
-      print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
-      print(response.email);
+      changeUserDetail(email: response.email.toString());
 
 
     }catch(e){
       if (kDebugMode) print(e.toString());
     }
+  }
+
+  void changeUserDetail({required String email}){
+    userinfo.update((val) {
+      val?.email = email;
+    });
   }
 
   Future refreshData() async{

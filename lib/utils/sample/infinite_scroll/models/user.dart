@@ -16,3 +16,9 @@ class User{
     );
   }
 }
+
+class UserDetail{
+  String email;
+
+  UserDetail({required this.email});
+}
