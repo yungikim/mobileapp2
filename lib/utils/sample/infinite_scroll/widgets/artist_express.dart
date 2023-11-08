@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/controllers/user_controller.dart';
-import 'package:mobileapp/utils/sample/infinite_scroll/models/user_detail.dart';
 
 class ArtistExpress extends StatelessWidget {
   ArtistExpress({super.key});
