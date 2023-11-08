@@ -7,8 +7,8 @@ import 'package:mobileapp/utils/sample/infinite_scroll/controllers/user_controll
 
 class UserDetailArtist extends StatefulWidget {
   const UserDetailArtist({super.key, required this.email});
-  final String email;
 
+  final String email;
 
   @override
   State<UserDetailArtist> createState() => _UserDetailArtistState();
@@ -32,75 +32,105 @@ class _UserDetailArtistState extends State<UserDetailArtist> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:  DefaultTabController(
-          length: 3,
-          child: Scaffold(
-            body: NestedScrollView(
-              headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                SliverAppBar(
-                  centerTitle: true,
-                  leading: IconButton(
-                    onPressed: (){
-                      Get.back();
-                    },
-                    icon: Icon(Icons.arrow_back_ios),
-                  ),
-                  backgroundColor: Colors.black,
-                  title: Obx(() =>Text(_userController.userinfo.value.email)),
-                  expandedHeight: 300,
-                  pinned: true,
-                  floating: false,
-                  forceElevated: innerBoxIsScrolled,
-                  flexibleSpace: FlexibleSpaceBar(
-                    background: Container(
-                      color: Colors.black,
-                      child: const Image(
-                        image: AssetImage("asset/images/logo/main-visual.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    //title: Text("작가 상세보기"),
-                  ),
-                  actions: [
-                  //  IconButton(onPressed: (){}, icon: Icon(Icons.close, size: 30.0,)),
-                  ],
-                  bottom: const TabBar(
-                    indicatorColor: Colors.red,
-                    labelStyle: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                    unselectedLabelStyle: TextStyle(fontSize: 17.0),
-                    tabs: [
-                      Tab(
-                        child: Text("작가 소개", style: TextStyle(fontSize: 20),),
-                      ),
-                      Tab(text: '작품',),
-                      Tab(text: 'VR갤러리',),
-                    ],
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          body: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) => [
+              SliverAppBar(
+                centerTitle: false,
+                leading: IconButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  icon: const Icon(Icons.arrow_back_ios),
+                ),
+                backgroundColor: Colors.black,
+                title: Obx(
+                  () => Text(
+                          _userController.userInfo.nickname + "",
+                       //   "kkk",
+                          style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                color: Colors.grey.shade900.withOpacity(1.0),
+                                offset: Offset(3.0, 0.0),
+                                blurRadius: 0.0,
+                              )
+                            ]
+
+                        ),
                   ),
                 ),
-              ],
-              body: TabBarView(
-                children: [
-                  ListView.builder(itemBuilder: (context, index){
-                    return ListTile(
-                      title: Text("Tab 1 content $index"),
-                    );
-                  }),
-                  ListView.builder(itemBuilder: (context, index){
-                    return ListTile(
-                      title: Text("Tab 2 content $index"),
-                    );
-                  }),
-                  ListView.builder(itemBuilder: (context, index){
-                    return ListTile(
-                      title: Text("Tab 3 content $index"),
-                    );
-                  })
+                expandedHeight: 300,
+                pinned: true,
+                floating: false,
+                forceElevated: innerBoxIsScrolled,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Container(
+                    color: Colors.black,
+                    child: const Image(
+                      image: AssetImage("asset/images/logo/main-visual.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  //title: Text("작가 상세보기"),
+                ),
+                actions: [
+                  //  IconButton(onPressed: (){}, icon: Icon(Icons.close, size: 30.0,)),
                 ],
+                bottom: TabBar(
+                  indicatorColor: Colors.red,
+                  labelStyle:
+                      TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
+                  unselectedLabelStyle: TextStyle(fontSize: 15.0),
+                  tabs: [
+                    Tab(
+                      //child: Text("작가 소개", style: TextStyle(fontSize: 20),),
+                      text: "작가 소개",
+                    ),
+                    Tab(
+                      text: '작품',
+                    ),
+                    Tab(
+                      child: Text(
+                        "VR 전시",
+                        style: TextStyle(shadows: [
+                          Shadow(
+                            color: Colors.grey.shade900.withOpacity(1.0),
+                            offset: Offset(1.0, 0.0),
+                            blurRadius: 0.0,
+                          )
+                        ]),
+                      ),
+                    ),
+                  ],
+                ),
               ),
+            ],
+            body: TabBarView(
+              children: [
+                ListView.builder(itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text("Tab 1 content $index"),
+                  );
+                }),
+                ListView.builder(itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text("Tab 2 content $index"),
+                  );
+                }),
+                ListView.builder(itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text("Tab 3 content $index"),
+                  );
+                })
+              ],
             ),
           ),
         ),
-
+      ),
     );
   }
 }
