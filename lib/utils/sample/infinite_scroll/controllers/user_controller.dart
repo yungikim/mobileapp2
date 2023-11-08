@@ -25,7 +25,7 @@ class UserController extends GetxController {
   //   carerr: [],
   // ).obs;
   //UserDetail2 userInfo = EmptyUserDetail2.obs as UserDetail2;
-  UserDetail2 userInfo = UserDetail2(nickname: "");
+  var userInfo = UserDetail2(nickname: "").obs;
 
   Future getUser() async {
     try {
@@ -76,10 +76,13 @@ class UserController extends GetxController {
 
       print("온다. 여기로....");
       print(userin.nickname);
+      print(userin.photoimageProfile);
+      print(userin.email);
+      print(userin.photoimage);
       // print(userin.id);
       // print(userin.email);
 
-      userInfo = userin;
+      userInfo.value = userin;
 
       //UserDetail userInfo = userDetailFromJson(response);
       //userInfo = user;

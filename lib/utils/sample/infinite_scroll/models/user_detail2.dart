@@ -8,11 +8,11 @@ UserDetail2 userDetailFromJson2(String str) =>
 class UserDetail2 {
   String nickname ="";
   // ID id;
-  // String email;
+   String? email;
   // String? gubun;
   // String? site;
   // String? welcomeId;
-  // String name;
+  String? name;
   // String? gender;
   // String? sortdate;
   // int? artCount;
@@ -22,19 +22,19 @@ class UserDetail2 {
   // String? artistkey;
   // String? emailAuth;
   // int? random;
-  // String? photoimage;
+  String? photoimage;
   // String? photoimageVersion;
   // String? photoimageList;
   // String? photoimageListVersion;
-  // String? photoimageProfile;
+   String? photoimageProfile;
   // String? photoimageProfileVersion;
-  // String? nameEng;
+   String? nameEng;
   // String? birth;
-  // String? content;
-  // String? content2;
+  String? content;
+  String? content2;
   // String? curnickname;
     List<Group>? group;
-  // List<Education>? education;
+  List<Education>? education;
   // List<Career>? career;
   // List<Cert>? cert;
   // List<Career>? display;
@@ -46,7 +46,8 @@ class UserDetail2 {
   UserDetail2({
     required this.nickname,
     // required this.id,
-    // required this.email,
+    this.email,
+    this.name,
     // this.gubun,
     // this.site,
     // this.welcomeId,
@@ -60,19 +61,19 @@ class UserDetail2 {
     //  this.artistkey,
     //  this.emailAuth,
     //  this.random,
-    //  this.photoimage,
+    this.photoimage,
     //  this.photoimageVersion,
     //  this.photoimageList,
     //  this.photoimageListVersion,
-    //  this.photoimageProfile,
+        this.photoimageProfile,
     //  this.photoimageProfileVersion,
-    //  this.nameEng,
+     this.nameEng,
     //  this.curnickname,
     //  this.birth,
-    //  this.content,
-    //  this.content2,
+      this.content,
+      this.content2,
         this.group,
-    //  this.education,
+    this.education,
     //  this.career,
     //  this.cert,
     //  this.display,
@@ -85,14 +86,27 @@ class UserDetail2 {
 
   UserDetail2.fromJson(Map<String, dynamic> json){
     nickname = json['nickname'];
+    email = json['email'];
+    photoimageProfile = json['photoimage'];
+    photoimageProfile = json['photoimage_profile'];
+    name = json['name'];
+    nameEng = json['name_eng'];
+    content = json['content'];
+    content2 = json['content2'];
     if (json["group"] != null){
       group = List<Group>.from(json["group"].map((x) => Group.fromJson(x)));
+    }
+    if (json["education"] != null){
+      education = List<Education>.from(json["education"].map((x) => Education.fromJson(x)));
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['nickname'] = nickname;
+    data['email'] = email;
+    data['photoimage'] = photoimage;
+    data['photoimage_profile'] = photoimageProfile;
     if (group != null){
       data['group'] = List<dynamic>.from(group!.map((x) => x.toJson()));
     }
@@ -225,20 +239,20 @@ class Cert {
 }
 
 class Education {
-  String level;
-  String status;
-  String schoolname;
-  String major;
-  String start;
-  String end;
+  String? level;
+  String? status;
+  String? schoolname;
+  String? major;
+  String? start;
+  String? end;
 
   Education({
-    required this.level,
-    required this.status,
-    required this.schoolname,
-    required this.major,
-    required this.start,
-    required this.end,
+    this.level,
+    this.status,
+     this.schoolname,
+     this.major,
+     this.start,
+     this.end,
   });
 
   factory Education.fromJson(Map<String, dynamic> json) =>

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:mobileapp/utils/sample/infinite_scroll/controllers/user_controller.dart';
+import 'package:mobileapp/utils/sample/infinite_scroll/widgets/artist_express.dart';
 
 class UserDetailArtist extends StatefulWidget {
   const UserDetailArtist({super.key, required this.email});
@@ -49,18 +50,15 @@ class _UserDetailArtistState extends State<UserDetailArtist> {
                 backgroundColor: Colors.black,
                 title: Obx(
                   () => Text(
-                          _userController.userInfo.nickname + "",
-                       //   "kkk",
-                          style: TextStyle(
-                            shadows: [
-                              Shadow(
-                                color: Colors.grey.shade900.withOpacity(1.0),
-                                offset: Offset(3.0, 0.0),
-                                blurRadius: 0.0,
-                              )
-                            ]
-
-                        ),
+                    _userController.userInfo.value.nickname + "",
+                    //   "kkk",
+                    style: TextStyle(shadows: [
+                      Shadow(
+                        color: Colors.grey.shade900.withOpacity(1.0),
+                        offset: Offset(3.0, 0.0),
+                        blurRadius: 0.0,
+                      )
+                    ]),
                   ),
                 ),
                 expandedHeight: 300,
@@ -70,9 +68,18 @@ class _UserDetailArtistState extends State<UserDetailArtist> {
                 flexibleSpace: FlexibleSpaceBar(
                   background: Container(
                     color: Colors.black,
-                    child: const Image(
-                      image: AssetImage("asset/images/logo/main-visual.jpg"),
-                      fit: BoxFit.cover,
+                    //https://www.gallery360.co.kr/artimage/shinari93@gmail.com/photo_profile/shinari93@gmail.com_gray.jpg
+                    //https://www.gallery360.co.kr/artimage/gallery360@gallery360.co.kr-spl-1598508967011/photo_profile/gallery360@gallery360.co.kr-spl-1598508967011_gray.jpg
+                    // child: const Image(
+                    //   image: AssetImage("asset/images/logo/main-visual.jpg"),
+                    //   fit: BoxFit.cover,
+                    // ),
+                    child: Obx(
+                      () => Image(
+                        image: NetworkImage(
+                            "https://www.gallery360.co.kr/artimage/${_userController.userInfo.value.email}/photo_profile/${_userController.userInfo.value.email}_gray.jpg"),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   //title: Text("작가 상세보기"),
@@ -111,11 +118,7 @@ class _UserDetailArtistState extends State<UserDetailArtist> {
             ],
             body: TabBarView(
               children: [
-                ListView.builder(itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text("Tab 1 content $index"),
-                  );
-                }),
+                ArtistExpress(),
                 ListView.builder(itemBuilder: (context, index) {
                   return ListTile(
                     title: Text("Tab 2 content $index"),
