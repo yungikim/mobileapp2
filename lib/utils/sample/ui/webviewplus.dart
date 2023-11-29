@@ -59,14 +59,14 @@ class _ImageEditorState extends State<ImageEditor> {
                       controller.loadUrl("http://localhost:8080/html/index.html?open&ver=1.0");
                       // controller.loadUrl("https://www.gallery360.co.kr/main/vr_gallery/gallery360_popup_test.jsp?key=gallery360@gallery360.co.kr_20191120151555_87NHWA4");
                     },
-                    onPageFinished: (url) {
-                      _controller!.getHeight().then((double height) {
-                        print("Height:  " + height.toString());
-                        setState(() {
-                          _height = height;
-                        });
-                      });
-                    },
+                    // onPageFinished: (url) {
+                    //   _controller!.getHeight().then((double height) {
+                    //     print("Height:  " + height.toString());
+                    //     setState(() {
+                    //       _height = height;
+                    //     });
+                    //   });
+                    // },
                     javascriptMode: JavascriptMode.unrestricted,
                   ),
                 ),
