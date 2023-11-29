@@ -84,12 +84,14 @@ class _wappState extends State<wapp> {
         ),
         //  appBar: AppBar(title: Text("In App Webview"),),
         body: Container(
-
+          height: 500,
+          color: Colors.red,
           child: InAppWebView(
-            //initialFile: "assets/html/index.html",
-            initialUrlRequest: URLRequest(
-                url: Uri.parse('http://localhost:8080/html/index.html?open&ver=1.0')
-            ),
+            initialFile: "assets/html/index.html",
+
+            // initialUrlRequest: URLRequest(
+            //     url: Uri.parse('http://localhost:8080/html/index.html?open&ver=1.0')
+            // ),
             initialOptions: InAppWebViewGroupOptions(
                 android: AndroidInAppWebViewOptions(useHybridComposition: true),
                 ios: IOSInAppWebViewOptions(

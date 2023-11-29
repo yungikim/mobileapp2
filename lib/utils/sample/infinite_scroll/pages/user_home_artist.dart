@@ -269,7 +269,6 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
                   if (index < state2.users.length) {
                     return GestureDetector(
                       onTap: () {
-                        print(state2.users[index].email.toString());
                         Get.to(
                           () => UserDetailArtist(
                             email: state2.users[index].email.toString(),
