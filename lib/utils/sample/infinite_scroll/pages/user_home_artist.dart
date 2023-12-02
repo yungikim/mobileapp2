@@ -38,6 +38,9 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
 
   @override
   void initState() {
+
+    print("initState......................");
+
     scrollerController2 = ScrollController();
     scrollerController2.addListener(onScroll);
 
@@ -212,13 +215,13 @@ class _UserHomeArtistState extends State<UserHomeArtist> {
                         value: _selectedValue,
                         items: _valueItems,
                         onChanged: (newValue) {
-                          setState(() {
+                         // setState(() {
                             _selectedValue = newValue!;
                             state2.type.value = _selectedValue.key;
                             state2.refreshData();
                             // state2.getUser();
                             // print(_selectedValue.key);
-                          });
+                        //  });
                         },
                       ),
                     ),
